@@ -4,7 +4,7 @@ using System.Text;
 
 namespace msac_competition.BLL.DTO
 {
-    class CompetitionDTO
+    public class CompetitionDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

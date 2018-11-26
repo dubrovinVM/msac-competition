@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using msac_competition.BLL.DTO;
+using msac_competition.BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using msac_competition.Models;
 
@@ -10,9 +12,19 @@ namespace msac_competition.Controllers
 {
     public class HomeController : Controller
     {
+        private IBaseService<TeamDTO, int> teamService;
+        private IBaseService<CompetitionDTO, int> competitionService;
+
+        public HomeController(IBaseService<TeamDTO, int> _teamService, IBaseService<CompetitionDTO, int> _competitionService)
+        {
+            teamService = _teamService;
+            competitionService = _competitionService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var competitions = competitionService.GetAll();
+            return View(competitions.ToArray());
         }
 
         public IActionResult About()

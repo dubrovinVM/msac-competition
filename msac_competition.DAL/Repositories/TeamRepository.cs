@@ -8,31 +8,31 @@ using msac_competition.DAL.Interfaces;
 
 namespace msac_competition.DAL.Repositories
 {
-    public class CompetitionRepository : IRepository<Competition>
+    public class TeamRepository : IRepository<Team>
     {
         private ApplicationContext db;
 
-        public CompetitionRepository(ApplicationContext context)
+        public TeamRepository(ApplicationContext context)
         {
             this.db = context;
         }
 
-        public IQueryable<Competition> GetAll()
+        public IQueryable<Team> GetAll()
         {
-            return db.Competitions;
+            return db.Teams;
         }
 
-        public Competition Get(int id)
+        public Team Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Create(Competition item)
+        public void Create(Team item)
         {
-            db.Competitions.Add(item);
+            db.Teams.Add(item);
         }
 
-        public void Update(Competition item)
+        public void Update(Team item)
         {
             throw new NotImplementedException();
         }
