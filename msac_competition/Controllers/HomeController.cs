@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using msac_competition.BLL.DTO;
 using msac_competition.BLL.Interfaces;
+using msac_competition.BLL.Services;
 using Microsoft.AspNetCore.Mvc;
 using msac_competition.Models;
 
@@ -12,19 +14,22 @@ namespace msac_competition.Controllers
 {
     public class HomeController : Controller
     {
-        private IBaseService<TeamDTO, int> teamService;
-        private IBaseService<CompetitionDTO, int> competitionService;
+        private ITeamService _teamService;
+        private ICompetitionService _competitionService;
+        private readonly IMapper _mapper;
 
-        public HomeController(IBaseService<TeamDTO, int> _teamService, IBaseService<CompetitionDTO, int> _competitionService)
+        public HomeController(ITeamService teamService, ICompetitionService competitionService, IMapper mapper)
         {
-            teamService = _teamService;
-            competitionService = _competitionService;
+            _teamService = teamService ?? throw new ArgumentNullException(Recources.Exceptions.teamServiceNullException);
+            _competitionService = competitionService ?? throw new ArgumentNullException(Recources.Exceptions.competitionServiceNullException);
+            _mapper = mapper ?? throw new ArgumentNullException(Recources.Exceptions.mapper);
         }
 
         public IActionResult Index()
         {
-            var competitions = competitionService.GetAll();
-            return View(competitions.ToArray());
+            var competitionsDto = _competitionService.GetAll();
+            var competitions = _mapper.Map<IList<CompetitionViewModel>>(competitionsDto);
+            return View(competitions);
         }
 
         public IActionResult About()

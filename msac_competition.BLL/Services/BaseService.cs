@@ -10,8 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace msac_competition.BLL.Services
 {
-    public class BaseService<TEntity, TPrimaryId> : IBaseService<TEntity, TPrimaryId>
-        where TEntity : class, IEntity<TPrimaryId>
+    public class BaseService<TEntity, TPrimaryId> : IBaseService<TEntity, TPrimaryId> where TEntity : class, IEntity<TPrimaryId>
     {
         protected readonly IUnitOfWork UnitOfWork;
 
