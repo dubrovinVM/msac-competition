@@ -32,6 +32,8 @@ namespace msac_competition.DAL.EF
                 .HasOne(pt => pt.Competition)
                 .WithMany(t => t.TeamCompetitions)
                 .HasForeignKey(pt => pt.CompetitionId);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
   

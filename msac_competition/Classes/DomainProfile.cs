@@ -12,10 +12,16 @@ namespace msac_competition.Classes
     {
         public DomainProfile()
         {
-            CreateMap<TeamDTO, TeamViewModel>();
-
+           // CreateMap<TeamDTO, TeamViewModel>();
             CreateMap<CompetitionDTO, CompetitionViewModel>()
-                .ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams.Select(y => y.Competitions).ToList()));
+                //.ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams.Select(y => y.Competitions).ToList()));
+                .ForMember(dto => dto.Name, opt => opt.MapFrom(x => x.Name))
+                .ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams));
+
+            CreateMap<TeamDTO, TeamViewModel>()
+                //.ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams.Select(y => y.Competitions).ToList()));
+                .ForMember(dto => dto.Name, opt => opt.MapFrom(x => x.Name))
+                .ForMember(dto => dto.Competitions, opt => opt.MapFrom(x => x.Competitions));
         }
     }
 }

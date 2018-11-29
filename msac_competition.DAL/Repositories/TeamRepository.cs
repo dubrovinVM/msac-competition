@@ -8,43 +8,43 @@ using msac_competition.DAL.Interfaces;
 
 namespace msac_competition.DAL.Repositories
 {
-    public class TeamRepository : IRepository<Team>
-    {
-        private ApplicationContext db;
+    //public class TeamRepository : IRepository<Team>
+    //{
+    //    private ApplicationContext db;
 
-        public TeamRepository(ApplicationContext context)
-        {
-            this.db = context;
-        }
+    //    public TeamRepository(ApplicationContext context)
+    //    {
+    //        this.db = context;
+    //    }
 
-        public IQueryable<Team> GetAll()
-        {
-            return db.Teams;
-        }
+    //    public IQueryable<Team> GetAll()
+    //    {
+    //        return db.Teams;
+    //    }
 
-        public Team Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+    //    public Team Get(int id)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public void Create(Team item)
-        {
-            db.Teams.Add(item);
-        }
+    //    public void Create(Team item)
+    //    {
+    //        db.Teams.Add(item);
+    //    }
 
-        public void Update(Team item)
-        {
-            throw new NotImplementedException();
-        }
+    //    public void Update(Team item)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+    //    public void Delete(int id)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public void Commit()
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //    public void Commit()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }

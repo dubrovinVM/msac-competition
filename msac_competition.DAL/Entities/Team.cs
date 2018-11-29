@@ -15,7 +15,7 @@ namespace msac_competition.DAL.Entities
 
         public Team()
         {
-            this.TeamCompetitions = new HashSet<TeamCompetition>();
+            TeamCompetitions = new List<TeamCompetition>();
         }
     }
 }
