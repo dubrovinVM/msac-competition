@@ -34,7 +34,7 @@ namespace msac_competition.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TeamCompetition",
+                name: "TeamCompetitions",
                 columns: table => new
                 {
                     TeamId = table.Column<int>(nullable: false),
@@ -42,15 +42,15 @@ namespace msac_competition.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TeamCompetition", x => new { x.TeamId, x.CompetitionId });
+                    table.PrimaryKey("PK_TeamCompetitions", x => new { x.TeamId, x.CompetitionId });
                     table.ForeignKey(
-                        name: "FK_TeamCompetition_Competitions_CompetitionId",
+                        name: "FK_TeamCompetitions_Competitions_CompetitionId",
                         column: x => x.CompetitionId,
                         principalTable: "Competitions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TeamCompetition_Teams_TeamId",
+                        name: "FK_TeamCompetitions_Teams_TeamId",
                         column: x => x.TeamId,
                         principalTable: "Teams",
                         principalColumn: "Id",
@@ -58,15 +58,15 @@ namespace msac_competition.DAL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TeamCompetition_CompetitionId",
-                table: "TeamCompetition",
+                name: "IX_TeamCompetitions_CompetitionId",
+                table: "TeamCompetitions",
                 column: "CompetitionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TeamCompetition");
+                name: "TeamCompetitions");
 
             migrationBuilder.DropTable(
                 name: "Competitions");

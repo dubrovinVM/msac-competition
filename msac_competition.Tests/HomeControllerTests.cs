@@ -12,36 +12,84 @@ using msac_competition.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
+using AutoMapper;
+using msac_competition.Classes;
 
 namespace msac_competition.Tests
 {
     public class HomeControllerTests
     {
+        private readonly Mock<ICompetitionService> _competitionServicMock;
+        private readonly Mock<ITeamService> _teamServicMock;
+        private readonly IMapper _mapperMock;
 
-        [Fact]
-        public void IndexViewDataMessage()
+        public HomeControllerTests()
         {
-            var teamServicMock = new Mock<ITeamService>();
-            teamServicMock.Setup(repo => repo.GetAll()).Returns(GetTestTeams().AsQueryable);
-            var competitionServicMock = new Mock<ICompetitionService>();
-            var mapperMock = new Mock<IMapper>();
-            mapperMock.Setup(item=>item.Map<TeamDTO, TeamViewModel>(It.IsAny<TeamDTO>())).Returns(new TeamViewModel());
+            _competitionServicMock = new Mock<ICompetitionService>();
+            _competitionServicMock.Setup(repo => repo.GetAll()).Returns(GetTestCompetitions().AsQueryable);
 
-            // Arrange
-            HomeController controller = new HomeController(teamServicMock.Object, competitionServicMock.Object, mapperMock.Object);
-            ViewResult result = controller.Index() as ViewResult;
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal("Index", result?.ViewName);
+            _teamServicMock = new Mock<ITeamService>();
+
+            var mockMapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainProfile());
+            });
+            _mapperMock = mockMapper.CreateMapper();
         }
 
-        private IList<TeamDTO> GetTestTeams()
+        [Fact]
+        public void IndexReturnsViewWithData()
         {
-            var teams = new List<TeamDTO>
+            try
             {
-                new TeamDTO { Id=1, Name="Team1" },
-                new TeamDTO { Id=1, Name="Team1" },
-                new TeamDTO { Id=1, Name="Team1" }
+                // Arrange
+                HomeController controller = new HomeController(_teamServicMock.Object, _competitionServicMock.Object, _mapperMock);
+                var result = controller.Index();
+                // Assert
+                Assert.NotNull(result);
+
+                var viewResult = Assert.IsType<ViewResult>(result);
+                var model = Assert.IsAssignableFrom<IEnumerable<CompetitionViewModel>>(viewResult.ViewData.Model);
+                Assert.Equal(3, model.Count());
+                var resViewName = (ViewResult)result;
+                Assert.Equal("Index", resViewName?.ViewName);
+            }
+            catch (Exception ex)
+            {
+                //Assert
+                Assert.False(false, ex.Message);
+            }
+        }
+
+        private IList<CompetitionDTO> GetTestCompetitions()
+        {
+            var competitions = new List<CompetitionDTO>
+            {
+                new CompetitionDTO { Id=1, Name="World Champ", Teams = new List<TeamDTO>(){ new TeamDTO(){Id = 1, Name = "Kiev"}}},
+                new CompetitionDTO { Id=2, Name="Ukraine champ", Teams = new List<TeamDTO>(){ new TeamDTO(){Id = 2, Name = "Kharkiv"}}},
+                new CompetitionDTO { Id=3, Name="Ukraine cup" , Teams = new List<TeamDTO>(){ new TeamDTO(){Id = 3, Name = "Zhytomyr"}}}
+            };
+            return competitions;
+        }
+
+        private IList<CompetitionViewModel> GetTestCompetitionViewModels()
+        {
+            var competitions = new List<CompetitionViewModel>
+            {
+                new CompetitionViewModel { Id=1, Name="World Champ", Teams = new List<TeamViewModel>(){ new TeamViewModel(){Id = 1, Name = "Kiev"}}},
+                new CompetitionViewModel { Id=2, Name="Ukraine champ", Teams = new List<TeamViewModel>(){ new TeamViewModel(){Id = 2, Name = "Kharkiv"}}},
+                new CompetitionViewModel { Id=3, Name="Ukraine cup" , Teams = new List<TeamViewModel>(){ new TeamViewModel(){Id = 3, Name = "Zhytomyr"}}}
+            };
+            return competitions;
+        }
+
+        private IList<TeamViewModel> GetTestTeamsViewModels()
+        {
+            var teams = new List<TeamViewModel>
+            {
+                new TeamViewModel { Id=1, Name="World Champ", Competitions = new List<CompetitionViewModel>(){ new CompetitionViewModel(){Id = 1, Name = "World Champ" } }},
+                new TeamViewModel { Id=2, Name="Ukraine champ", Competitions = new List<CompetitionViewModel>(){ new CompetitionViewModel(){Id = 2, Name = "Ukraine champ" } }},
+                new TeamViewModel { Id=3, Name="Ukraine cup" , Competitions = new List<CompetitionViewModel>(){ new CompetitionViewModel(){Id = 3, Name = "Ukraine cup" } }}
             };
             return teams;
         }

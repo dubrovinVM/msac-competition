@@ -18,18 +18,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Recources\Exceptions.Designer.cs">
+    <Compile Update="Resources\Exceptions.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Exceptions.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Titles.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Titles.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Recources\Exceptions.resx">
-      <CustomToolNamespace>Recources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
+    <EmbeddedResource Update="Resources\Exceptions.resx">
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Titles.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Titles.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -54,7 +54,7 @@ namespace msac_competition.DAL.Migrations
 
                     b.HasIndex("CompetitionId");
 
-                    b.ToTable("TeamCompetition");
+                    b.ToTable("TeamCompetitions");
                 });
 
             modelBuilder.Entity("msac_competition.DAL.Entities.TeamCompetition", b =>

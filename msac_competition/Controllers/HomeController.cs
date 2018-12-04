@@ -20,16 +20,23 @@ namespace msac_competition.Controllers
 
         public HomeController(ITeamService teamService, ICompetitionService competitionService, IMapper mapper)
         {
-            _teamService = teamService ?? throw new ArgumentNullException(Recources.Exceptions.teamServiceNullException);
-            _competitionService = competitionService ?? throw new ArgumentNullException(Recources.Exceptions.competitionServiceNullException);
-            _mapper = mapper ?? throw new ArgumentNullException(Recources.Exceptions.mapper);
+            _teamService = teamService ?? throw new ArgumentNullException(Resources.Exceptions.teamServiceNullException);
+            _competitionService = competitionService ?? throw new ArgumentNullException(Resources.Exceptions.competitionServiceNullException);
+            _mapper = mapper ?? throw new ArgumentNullException(Resources.Exceptions.mapper);
         }
 
         public IActionResult Index()
         {
             var competitionsDto = _competitionService.GetAll();
             var competitions = _mapper.Map<IList<CompetitionViewModel>>(competitionsDto);
-            return View(competitions);
+            return View("Index", competitions);
+        }
+
+        public IActionResult Add()
+        {
+            var competitionsDto = _competitionService.GetAll();
+            var competitions = _mapper.Map<IList<CompetitionViewModel>>(competitionsDto);
+            return View("Index", competitions);
         }
 
         public IActionResult About()

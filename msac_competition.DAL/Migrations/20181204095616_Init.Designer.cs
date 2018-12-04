@@ -9,7 +9,7 @@ using msac_competition.DAL.EF;
 namespace msac_competition.DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20181127155955_Init")]
+    [Migration("20181204095616_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,7 +56,7 @@ namespace msac_competition.DAL.Migrations
 
                     b.HasIndex("CompetitionId");
 
-                    b.ToTable("TeamCompetition");
+                    b.ToTable("TeamCompetitions");
                 });
 
             modelBuilder.Entity("msac_competition.DAL.Entities.TeamCompetition", b =>

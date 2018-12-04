@@ -12,6 +12,7 @@ namespace msac_competition.DAL.EF
     {
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamCompetition> TeamCompetitions { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {

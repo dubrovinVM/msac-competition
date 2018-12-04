@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Recources {
+namespace Resources {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace Recources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Exceptions {
+    public class Exceptions {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace Recources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("msac_competition.Recources.Exceptions", typeof(Exceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("msac_competition.Resources.Exceptions", typeof(Exceptions).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Recources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Recources {
         /// <summary>
         ///   Looks up a localized string similar to CompetitionService can&apos;t be null.
         /// </summary>
-        internal static string competitionServiceNullException {
+        public static string competitionServiceNullException {
             get {
                 return ResourceManager.GetString("competitionServiceNullException", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Recources {
         /// <summary>
         ///   Looks up a localized string similar to Mapper can&apos;t be null.
         /// </summary>
-        internal static string mapper {
+        public static string mapper {
             get {
                 return ResourceManager.GetString("mapper", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Recources {
         /// <summary>
         ///   Looks up a localized string similar to TeamService can&apos;t be null.
         /// </summary>
-        internal static string teamServiceNullException {
+        public static string teamServiceNullException {
             get {
                 return ResourceManager.GetString("teamServiceNullException", resourceCulture);
             }
