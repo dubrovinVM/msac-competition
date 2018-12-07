@@ -33,7 +33,7 @@ namespace msac_competition.Controllers
         public IActionResult Create()
         {
             var itemDto = _sportmanService.GetAll();
-            var items = _mapper.Map<IList<FstViewModel>>(itemDto);
+            var items = _mapper.Map<IList<SportmanViewModel>>(itemDto);
             return View("Index", items);
         }
     }

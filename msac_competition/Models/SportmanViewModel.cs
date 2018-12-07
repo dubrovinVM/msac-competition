@@ -20,13 +20,7 @@ namespace msac_competition.Models
         public int? TeamId { get; set; }
         public TeamViewModel Team { get; set; }
         public string Avatar { get; set; }
-
-        public string CoachName { get; set; }
-
-        public SportmanViewModel()
-        {
-            this.CoachName = String.Format($"{Coach?.Surname} { Coach?.Name.Substring(0,2)}.{Coach?.Surname.Substring(0,2)}.");
-        }
-
+        [NotMapped]
+        public string CoachPib { get; set; }
     }
 }

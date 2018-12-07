@@ -21,18 +21,18 @@
             </tr>
             @foreach (var sportman in Model)
             {
-            <tr>
-                <td>@sportman.Avatar</td>
-                <td>@sportman.Surname</td>
-                <td>@sportman.Name</td>
-                <td>@sportman.Lastname</td>
-                <td>@sportman.DaTeOfBirth</td>
-                <td>@sportman.SportRank</td>
-                <td>@sportman.CoachName</td>
-                <td>@sportman.Team.Name</td>
-                <td><a asp-action="Create">@Resources.TableHeads.Update</a></td>
-                <td><a asp-action="Create">@Resources.TableHeads.Delete</a></td>
-            </tr>
+                <tr>
+                    <td>@sportman.Avatar</td>
+                    <td>@sportman.Surname</td>
+                    <td>@sportman.Name</td>
+                    <td>@sportman.Lastname</td>
+                    <td>@sportman.DaTeOfBirth</td>
+                    <td>@sportman.SportRank</td>
+                    <td>@sportman.CoachPib</td>
+                    <td>@sportman.Team.Name</td>
+                    <td><a asp-action="Create">@Resources.TableHeads.Update</a></td>
+                    <td><a asp-action="Create">@Resources.TableHeads.Delete</a></td>
+                </tr>
             }
         </table>
         <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>

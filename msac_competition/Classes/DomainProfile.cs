@@ -24,7 +24,9 @@ namespace msac_competition.Classes
 
             CreateMap<CoachDTO, CoachViewModel>();
 
-            CreateMap<SportmanDTO, SportmanViewModel>().ForMember(dto => dto.CoachName, opt => opt.Ignore());
+            CreateMap<SportmanDTO, SportmanViewModel>()
+                .ForMember(dto => dto.CoachPib, opt => opt.Ignore())
+                .ForMember(dto => dto.CoachPib, opt => opt.MapFrom(x => (x.Coach.Surname) ));
 
         }
     }
