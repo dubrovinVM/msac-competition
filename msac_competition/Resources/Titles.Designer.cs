@@ -61,11 +61,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Додати.
+        ///   Looks up a localized string similar to Міста.
         /// </summary>
-        public static string Add {
+        public static string Cities {
             get {
-                return ResourceManager.GetString("Add", resourceCulture);
+                return ResourceManager.GetString("Cities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Тренери.
+        /// </summary>
+        public static string Coaches {
+            get {
+                return ResourceManager.GetString("Coaches", resourceCulture);
             }
         }
         
@@ -79,11 +88,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Видалити.
+        ///   Looks up a localized string similar to ФСТ.
         /// </summary>
-        public static string Delete {
+        public static string FST {
             get {
-                return ResourceManager.GetString("Delete", resourceCulture);
+                return ResourceManager.GetString("FST", resourceCulture);
             }
         }
         
@@ -111,24 +120,6 @@ namespace Resources {
         public static string Teams {
             get {
                 return ResourceManager.GetString("Teams", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Змінити.
-        /// </summary>
-        public static string Update {
-            get {
-                return ResourceManager.GetString("Update", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Перегляд.
-        /// </summary>
-        public static string View {
-            get {
-                return ResourceManager.GetString("View", resourceCulture);
             }
         }
     }

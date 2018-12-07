@@ -18,10 +18,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Buttons.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Buttons.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Exceptions.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Exceptions.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\TableHeads.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TableHeads.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\Titles.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -31,16 +41,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Buttons.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Exceptions.resx">
       <CustomToolNamespace>Resources</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\TableHeads.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TableHeads.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Titles.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Titles.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\coaches\" />
+    <Folder Include="wwwroot\images\afisha\" />
+    <Folder Include="wwwroot\images\sportsmen\" />
   </ItemGroup>
 
 </Project>

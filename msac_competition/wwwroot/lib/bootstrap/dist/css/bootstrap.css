@@ -1083,7 +1083,7 @@ html {
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -3975,6 +3975,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+    padding-top: 10px;
 }
 .nav > li {
   position: relative;
@@ -4272,11 +4273,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-width: 1px 0 0;
 }
 .navbar-brand {
-  float: left;
-  height: 50px;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
+    float: left;
+    height: 70px;
+    padding: 25px 15px;
+    font-size: 25px;
+    line-height: 20px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {

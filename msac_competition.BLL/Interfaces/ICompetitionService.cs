@@ -9,6 +9,5 @@ namespace msac_competition.BLL.Interfaces
     public interface ICompetitionService : IBaseService<CompetitionDTO, int>
     {
          IQueryable<CompetitionDTO> GetAll();
-
     }
 }

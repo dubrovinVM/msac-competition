@@ -1,7 +1,44 @@
-﻿
+﻿@model IList<SportmanViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = @Resources.Titles.FST;
 }
 
-<h2>Index</h2>
+<div class="container">
+    <div class="row">
+        <h1>@Resources.Titles.Sportsmen</h1>
+        <table class="table">
+            <tr>
+                <td>@Resources.TableHeads.Photo</td>
+                <td>@Resources.TableHeads.Surname</td>
+                <td>@Resources.TableHeads.Firstname</td>
+                <td>@Resources.TableHeads.Lastname</td>
+                <td>@Resources.TableHeads.Birthday</td>
+                <td>@Resources.TableHeads.Sportrank</td>
+                <td>@Resources.TableHeads.Coach</td>
+                <td>@Resources.TableHeads.Team</td>
+                <td>@Resources.TableHeads.Update</td>
+                <td>@Resources.TableHeads.Delete</td>
+            </tr>
+            @foreach (var sportman in Model)
+            {
+            <tr>
+                <td>@sportman.Avatar</td>
+                <td>@sportman.Surname</td>
+                <td>@sportman.Name</td>
+                <td>@sportman.Lastname</td>
+                <td>@sportman.DaTeOfBirth</td>
+                <td>@sportman.SportRank</td>
+                <td>@sportman.CoachName</td>
+                <td>@sportman.Team.Name</td>
+                <td><a asp-action="Create">@Resources.TableHeads.Update</a></td>
+                <td><a asp-action="Create">@Resources.TableHeads.Delete</a></td>
+            </tr>
+            }
+        </table>
+        <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>
+    </div>
+</div>
+
+
+
 

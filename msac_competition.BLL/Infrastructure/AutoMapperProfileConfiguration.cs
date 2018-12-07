@@ -26,6 +26,15 @@ namespace msac_competition.BLL.Infrastructure
                     .ForMember(m => m.Name, opt => opt.MapFrom(a => a.Name))
                     .ForMember(m => m.Competitions, opt => opt.MapFrom(a => a.TeamCompetitions.Select(c => c.Competition).ToList()));
 
+                cfg.CreateMap<Fst, FstDTO>();
+
+                cfg.CreateMap<City, CityDTO>();
+
+                CreateMap<Coach, CoachDTO>();
+
+                cfg.CreateMap<Sportman, SportmanDTO>().
+                    ForMember(m => m.CoachId, opt => opt.MapFrom(a => a.CoachId)).
+                    ForMember(m => m.TeamId, opt => opt.MapFrom(a => a.TeamId));
             });
         }
 

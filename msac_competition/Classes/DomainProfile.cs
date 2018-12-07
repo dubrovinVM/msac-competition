@@ -17,10 +17,15 @@ namespace msac_competition.Classes
                 .ForMember(dto => dto.Name, opt => opt.MapFrom(x => x.Name))
                 .ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams));
 
-            CreateMap<TeamDTO, TeamViewModel>()
-                //.ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams.Select(y => y.Competitions).ToList()));
-                .ForMember(dto => dto.Name, opt => opt.MapFrom(x => x.Name))
-                .ForMember(dto => dto.Competitions, opt => opt.MapFrom(x => x.Competitions));
+            CreateMap<TeamDTO, TeamViewModel>();
+
+            CreateMap<FstDTO, FstViewModel>()
+                .ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams));
+
+            CreateMap<CoachDTO, CoachViewModel>();
+
+            CreateMap<SportmanDTO, SportmanViewModel>().ForMember(dto => dto.CoachName, opt => opt.Ignore());
+
         }
     }
 }

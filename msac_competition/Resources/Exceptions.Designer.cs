@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CityService can&apos;t be null.
+        /// </summary>
+        public static string cityServiceNullException {
+            get {
+                return ResourceManager.GetString("cityServiceNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CoachService can&apos;t be null.
+        /// </summary>
+        public static string coachServiceNullException {
+            get {
+                return ResourceManager.GetString("coachServiceNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CompetitionService can&apos;t be null.
         /// </summary>
         public static string competitionServiceNullException {
@@ -70,11 +88,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FstService can&apos;t be null.
+        /// </summary>
+        public static string fstServiceNullException {
+            get {
+                return ResourceManager.GetString("fstServiceNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mapper can&apos;t be null.
         /// </summary>
         public static string mapper {
             get {
                 return ResourceManager.GetString("mapper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SportmanService can&apos;t be null.
+        /// </summary>
+        public static string sportmanServiceNullException {
+            get {
+                return ResourceManager.GetString("sportmanServiceNullException", resourceCulture);
             }
         }
         

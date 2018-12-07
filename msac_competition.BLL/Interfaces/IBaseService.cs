@@ -12,6 +12,5 @@ namespace msac_competition.BLL.Interfaces
         void Remove(T removeItem, bool shouldBeCommited = false);
         void Commit(bool shouldBeCommited = false);
         Task CommitAsync(bool shouldBeCommited = false);
-
     }
 }

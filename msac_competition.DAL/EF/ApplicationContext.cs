@@ -13,6 +13,11 @@ namespace msac_competition.DAL.EF
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<TeamCompetition> TeamCompetitions { get; set; }
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Coach> Coaches { get; set; }
+        public DbSet<Fst> Fsts { get; set; }
+        public DbSet<Sportman> Sportmen { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {

@@ -17,38 +17,40 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">@Resources.Titles.Competitions</span>
-                    <span class="icon-bar">@Resources.Titles.View</span>
-                    <span class="icon-bar">@Resources.Titles.Add</span>
-                    <span class="icon-bar">@Resources.Titles.Update</span>
-                    <span class="icon-bar">@Resources.Titles.Delete</span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">msac_competition</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">@Resources.Titles.Competitions</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">@Resources.Titles.Teams</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">@Resources.Titles.Sportsmen</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">@Resources.Titles.Reports</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">@Resources.Titles.Competitions</span>
+                <span class="icon-bar">@Resources.TableHeads.View</span>
+                <span class="icon-bar">@Resources.Buttons.Create</span>
+            </button>
+            <a class="navbar-brand"><img  src="images/logo.png" style="height: 60px; margin-top: -20px;" /></a>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">@Resources.Titles.Competitions</a>
         </div>
-    </nav>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a asp-area="" asp-controller="Team" asp-action="Index">@Resources.Titles.Teams</a></li>
+                <li><a asp-area="" asp-controller="Sportsmen" asp-action="Index">@Resources.Titles.Sportsmen</a></li>
+                <li><a asp-area="" asp-controller="Fst" asp-action="Index">@Resources.Titles.FST</a></li>
+                <li><a asp-area="" asp-controller="Coach" asp-action="Index">@Resources.Titles.Coaches</a></li>
+                <li><a asp-area="" asp-controller="City" asp-action="Index">@Resources.Titles.Cities</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">@Resources.Titles.Reports</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - msac_competition</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    <br/>
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; 2018 - msac_competition</p>
+    </footer>
+</div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
