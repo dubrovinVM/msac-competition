@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using msac_competition.BLL.Infrastructure;
+using msac_competition.Classes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +33,6 @@ namespace msac_competition
             services.AddSqlContextDependencies(connectionString);
             services.AddUnitOfWorkDependencies();
 
-
             //var context = new ApplicationContext(cs);
             //services.AddDbContext<ApplicationContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -41,18 +41,24 @@ namespace msac_competition
             //    .AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             services.AddAutoMapper();
 
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new AutoMapperProfileConfiguration());
+                cfg.AddProfile(new AutoMapperProfileConfiguration("DALProfile"));
             });
-
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
-            //services.AddAutoMapper();
+            var config2 = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainProfile());
+            });
+            var mapper2 = config2.CreateMapper();
+            services.AddSingleton(mapper2);
+
+            services.AddSingleton(Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +73,7 @@ namespace msac_competition
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+           
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             //app.UseAuthentication();

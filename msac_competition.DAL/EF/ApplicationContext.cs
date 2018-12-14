@@ -18,6 +18,8 @@ namespace msac_competition.DAL.EF
         public DbSet<Coach> Coaches { get; set; }
         public DbSet<Fst> Fsts { get; set; }
         public DbSet<Sportman> Sportmen { get; set; }
+        public DbSet<SportmanCompetition> SportmenCompetitions { get; set; }
+        
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -38,6 +40,31 @@ namespace msac_competition.DAL.EF
                 .HasOne(pt => pt.Competition)
                 .WithMany(t => t.TeamCompetitions)
                 .HasForeignKey(pt => pt.CompetitionId);
+
+            modelBuilder.Entity<SportmanCompetition>()
+                .HasKey(t => new { t.SportmanId, t.CompetitionId });
+
+            modelBuilder.Entity<SportmanCompetition>()
+                .HasOne(pt => pt.Sportman)
+                .WithMany(p => p.SportmanCompetitions)
+                .HasForeignKey(pt => pt.SportmanId);
+
+            modelBuilder.Entity<SportmanCompetition>()
+                .HasOne(pt => pt.Competition)
+                .WithMany(t => t.SportmenCompetitions)
+                .HasForeignKey(pt => pt.CompetitionId);
+
+            modelBuilder.Entity<Coach>()
+                .HasMany(r => r.Sportmen)
+                .WithOne(s => s.Coach)
+                .HasForeignKey(s => s.CoachId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<Coach>()
+                .HasOne(r => r.Team)
+                .WithOne(t => t.Coach)
+                .HasForeignKey<Team>(t => t.CoachId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             base.OnModelCreating(modelBuilder);
         }

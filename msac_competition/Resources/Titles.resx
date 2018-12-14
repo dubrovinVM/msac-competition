@@ -126,6 +126,24 @@
   <data name="Competitions" xml:space="preserve">
     <value>Змагання</value>
   </data>
+  <data name="createCoach" xml:space="preserve">
+    <value>Додати тренера</value>
+  </data>
+  <data name="createCompetition" xml:space="preserve">
+    <value>Додати змагання</value>
+  </data>
+  <data name="createFst" xml:space="preserve">
+    <value>Додати ФСТ</value>
+  </data>
+  <data name="createSportman" xml:space="preserve">
+    <value>Додати спортсмена</value>
+  </data>
+  <data name="createTeam" xml:space="preserve">
+    <value>Додати команду</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
   <data name="FST" xml:space="preserve">
     <value>ФСТ</value>
   </data>
@@ -137,5 +155,35 @@
   </data>
   <data name="Teams" xml:space="preserve">
     <value>Команди</value>
+  </data>
+  <data name="deleteCoach" xml:space="preserve">
+    <value>Видалення тренера</value>
+  </data>
+  <data name="deleteCompetition" xml:space="preserve">
+    <value>Видалення змагання</value>
+  </data>
+  <data name="deleteFST" xml:space="preserve">
+    <value>Видалення ФСТ</value>
+  </data>
+  <data name="deleteSportman" xml:space="preserve">
+    <value>Видалення спортсмена</value>
+  </data>
+  <data name="deleteTeam" xml:space="preserve">
+    <value>Видалення команди</value>
+  </data>
+  <data name="UpdateCoach" xml:space="preserve">
+    <value>Обновити дані про тренера</value>
+  </data>
+  <data name="UpdateCompetition" xml:space="preserve">
+    <value>Обновити дані про змагання</value>
+  </data>
+  <data name="UpdateFst" xml:space="preserve">
+    <value>Обновити дані про ФСТ</value>
+  </data>
+  <data name="UpdateSportman" xml:space="preserve">
+    <value>Обновити дані про спортсмена</value>
+  </data>
+  <data name="UpdateTeam" xml:space="preserve">
+    <value>Обновити дані про команду</value>
   </data>
 </root>

@@ -11,6 +11,7 @@ namespace msac_competition.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<TeamViewModel> Teams { get; set; }
+        public ICollection<SportmanViewModel> Sportmen { get; set; }
 
         public DateTime StatedAt { get; set; }
         public DateTime? FinishedAt { get; set; }
@@ -21,6 +22,7 @@ namespace msac_competition.Models
         public CompetitionViewModel()
         {
             Teams = new List<TeamViewModel>();
+            Sportmen = new List<SportmanViewModel>();
         }
         public string Afisha { get; set; }
     }

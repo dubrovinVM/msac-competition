@@ -88,6 +88,105 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Додати тренера.
+        /// </summary>
+        public static string createCoach {
+            get {
+                return ResourceManager.GetString("createCoach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Додати змагання.
+        /// </summary>
+        public static string createCompetition {
+            get {
+                return ResourceManager.GetString("createCompetition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Додати ФСТ.
+        /// </summary>
+        public static string createFst {
+            get {
+                return ResourceManager.GetString("createFst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Додати спортсмена.
+        /// </summary>
+        public static string createSportman {
+            get {
+                return ResourceManager.GetString("createSportman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Додати команду.
+        /// </summary>
+        public static string createTeam {
+            get {
+                return ResourceManager.GetString("createTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалення тренера.
+        /// </summary>
+        public static string deleteCoach {
+            get {
+                return ResourceManager.GetString("deleteCoach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалення змагання.
+        /// </summary>
+        public static string deleteCompetition {
+            get {
+                return ResourceManager.GetString("deleteCompetition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалення ФСТ.
+        /// </summary>
+        public static string deleteFST {
+            get {
+                return ResourceManager.GetString("deleteFST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалення спортсмена.
+        /// </summary>
+        public static string deleteSportman {
+            get {
+                return ResourceManager.GetString("deleteSportman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалення команди.
+        /// </summary>
+        public static string deleteTeam {
+            get {
+                return ResourceManager.GetString("deleteTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Помилка.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ФСТ.
         /// </summary>
         public static string FST {
@@ -120,6 +219,51 @@ namespace Resources {
         public static string Teams {
             get {
                 return ResourceManager.GetString("Teams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обновити дані про тренера.
+        /// </summary>
+        public static string UpdateCoach {
+            get {
+                return ResourceManager.GetString("UpdateCoach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обновити дані про змагання.
+        /// </summary>
+        public static string UpdateCompetition {
+            get {
+                return ResourceManager.GetString("UpdateCompetition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обновити дані про ФСТ.
+        /// </summary>
+        public static string UpdateFst {
+            get {
+                return ResourceManager.GetString("UpdateFst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обновити дані про спортсмена.
+        /// </summary>
+        public static string UpdateSportman {
+            get {
+                return ResourceManager.GetString("UpdateSportman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обновити дані про команду.
+        /// </summary>
+        public static string UpdateTeam {
+            get {
+                return ResourceManager.GetString("UpdateTeam", resourceCulture);
             }
         }
     }

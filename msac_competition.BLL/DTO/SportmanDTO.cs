@@ -14,11 +14,21 @@ namespace msac_competition.BLL.DTO
         public string Lastname { get; set; }
         public DateTime DaTeOfBirth { get; set; }
         public SportRank SportRank { get; set; }
+        public Sex Sex { get; set; }
+        public string Avatar { get; set; }
+
         public int? CoachId { get; set; }
         public CoachDTO Coach { get; set; }
+
         public int? TeamId { get; set; }
         public TeamDTO Team { get; set; }
-        public string Avatar { get; set; }
+
+        public ICollection<CompetitionDTO> Competitions { get; set; }
+
+        public SportmanDTO()
+        {
+            Competitions = new List<CompetitionDTO>();
+        }
 
     }
 }

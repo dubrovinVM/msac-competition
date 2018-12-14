@@ -14,6 +14,8 @@ namespace msac_competition.DAL.Entities
         public string Lastname { get; set; }
         public DateTime DaTeOfBirth { get; set; }
         public SportRank SportRank { get; set; }
+        public Sex Sex { get; set; }
+        public string Avatar { get; set; }
 
         public int? CoachId { get; set; }
         public virtual Coach Coach { get; set; }
@@ -21,7 +23,12 @@ namespace msac_competition.DAL.Entities
         public int? TeamId { get; set; }
         public virtual Team Team { get; set; }
 
-        public string Avatar { get; set; }
+        public virtual ICollection<SportmanCompetition> SportmanCompetitions { get; set; }
+
+        public Sportman()
+        {
+            SportmanCompetitions = new List<SportmanCompetition>();
+        }
 
     }
 }

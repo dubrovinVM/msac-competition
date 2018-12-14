@@ -10,31 +10,34 @@ namespace msac_competition.BLL.Infrastructure
 {
     public class AutoMapperProfileConfiguration : Profile
     {
-        public AutoMapperProfileConfiguration(): this("MyProfile")
+        public AutoMapperProfileConfiguration(): this("DALProfile")
         {
         }
 
-        protected AutoMapperProfileConfiguration(string profileName): base(profileName)
+        public AutoMapperProfileConfiguration(string profileName): base(profileName)
         {
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Competition, CompetitionDTO>()
-                    .ForMember(m => m.Name, opt => opt.MapFrom(a => a.Name))
                     .ForMember(m => m.Teams, opt => opt.MapFrom(x => x.TeamCompetitions.Select(c=>c.Team).ToList()));
 
                 cfg.CreateMap<Team, TeamDTO>()
-                    .ForMember(m => m.Name, opt => opt.MapFrom(a => a.Name))
                     .ForMember(m => m.Competitions, opt => opt.MapFrom(a => a.TeamCompetitions.Select(c => c.Competition).ToList()));
+                cfg.CreateMap<TeamDTO, Team>();
 
                 cfg.CreateMap<Fst, FstDTO>();
+                cfg.CreateMap<FstDTO, Fst>();
 
                 cfg.CreateMap<City, CityDTO>();
 
-                CreateMap<Coach, CoachDTO>();
+                cfg.CreateMap<Coach, CoachDTO>();
+                cfg.CreateMap<CoachDTO, Coach>();
 
+                cfg.CreateMap<SportmanDTO, Sportman>();
                 cfg.CreateMap<Sportman, SportmanDTO>().
                     ForMember(m => m.CoachId, opt => opt.MapFrom(a => a.CoachId)).
-                    ForMember(m => m.TeamId, opt => opt.MapFrom(a => a.TeamId));
+                    ForMember(m => m.TeamId, opt => opt.MapFrom(a => a.TeamId)).
+                    ForMember(m => m.Competitions, opt => opt.MapFrom(a => a.SportmanCompetitions.Select(c => c.Competition).ToList()));
             });
         }
 

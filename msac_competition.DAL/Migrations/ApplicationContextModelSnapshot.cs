@@ -44,13 +44,15 @@ namespace msac_competition.DAL.Migrations
 
                     b.Property<string>("Avatar");
 
-                    b.Property<DateTime>("DaTeOfBirth");
+                    b.Property<DateTime?>("DaTeOfBirth");
 
                     b.Property<string>("Lastname");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("SportRank");
+                    b.Property<int>("Sex");
+
+                    b.Property<int?>("SportRank");
 
                     b.Property<string>("Surname");
 
@@ -126,6 +128,8 @@ namespace msac_competition.DAL.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("Sex");
+
                     b.Property<int>("SportRank");
 
                     b.Property<string>("Surname");
@@ -139,6 +143,19 @@ namespace msac_competition.DAL.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("Sportmen");
+                });
+
+            modelBuilder.Entity("msac_competition.DAL.Entities.SportmanCompetition", b =>
+                {
+                    b.Property<int?>("SportmanId");
+
+                    b.Property<int?>("CompetitionId");
+
+                    b.HasKey("SportmanId", "CompetitionId");
+
+                    b.HasIndex("CompetitionId");
+
+                    b.ToTable("SportmenCompetitions");
                 });
 
             modelBuilder.Entity("msac_competition.DAL.Entities.Team", b =>
@@ -174,9 +191,9 @@ namespace msac_competition.DAL.Migrations
 
             modelBuilder.Entity("msac_competition.DAL.Entities.TeamCompetition", b =>
                 {
-                    b.Property<int>("TeamId");
+                    b.Property<int?>("TeamId");
 
-                    b.Property<int>("CompetitionId");
+                    b.Property<int?>("CompetitionId");
 
                     b.HasKey("TeamId", "CompetitionId");
 
@@ -196,11 +213,25 @@ namespace msac_competition.DAL.Migrations
                 {
                     b.HasOne("msac_competition.DAL.Entities.Coach", "Coach")
                         .WithMany("Sportmen")
-                        .HasForeignKey("CoachId");
+                        .HasForeignKey("CoachId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("msac_competition.DAL.Entities.Team", "Team")
                         .WithMany("Sportmen")
                         .HasForeignKey("TeamId");
+                });
+
+            modelBuilder.Entity("msac_competition.DAL.Entities.SportmanCompetition", b =>
+                {
+                    b.HasOne("msac_competition.DAL.Entities.Competition", "Competition")
+                        .WithMany("SportmenCompetitions")
+                        .HasForeignKey("CompetitionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("msac_competition.DAL.Entities.Sportman", "Sportman")
+                        .WithMany("SportmanCompetitions")
+                        .HasForeignKey("SportmanId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("msac_competition.DAL.Entities.Team", b =>
@@ -211,7 +242,8 @@ namespace msac_competition.DAL.Migrations
 
                     b.HasOne("msac_competition.DAL.Entities.Coach", "Coach")
                         .WithOne("Team")
-                        .HasForeignKey("msac_competition.DAL.Entities.Team", "CoachId");
+                        .HasForeignKey("msac_competition.DAL.Entities.Team", "CoachId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("msac_competition.DAL.Entities.Fst", "Fst")
                         .WithMany("Teams")

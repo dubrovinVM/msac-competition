@@ -1,24 +1,27 @@
 ﻿@model IList<SportmanViewModel>
 @{
-    ViewData["Title"] = @Resources.Titles.FST;
+    ViewData["Title"] = @Resources.Titles.Sportsmen;
 }
 
-<div class="container">
-    <div class="row">
-        <h1>@Resources.Titles.Sportsmen</h1>
-        <table class="table">
+@*<div class="container">  *@
+<div class="row">
+    <h1>@Resources.Titles.Sportsmen</h1>
+    <table class="table table-striped table-condensed">
+        <thead>
             <tr>
-                <td>@Resources.TableHeads.Photo</td>
-                <td>@Resources.TableHeads.Surname</td>
-                <td>@Resources.TableHeads.Firstname</td>
-                <td>@Resources.TableHeads.Lastname</td>
-                <td>@Resources.TableHeads.Birthday</td>
-                <td>@Resources.TableHeads.Sportrank</td>
-                <td>@Resources.TableHeads.Coach</td>
-                <td>@Resources.TableHeads.Team</td>
-                <td>@Resources.TableHeads.Update</td>
-                <td>@Resources.TableHeads.Delete</td>
+                <th>@Resources.TableHeads.Photo</th>
+                <th>@Resources.TableHeads.Surname</th>
+                <th>@Resources.TableHeads.Firstname</th>
+                <th>@Resources.TableHeads.Lastname</th>
+                <th>@Resources.TableHeads.Birthday</th>
+                <th>@Resources.TableHeads.Sportrank</th>
+                <th>@Resources.TableHeads.Coach</th>
+                <th>@Resources.TableHeads.Team</th>
+                <th>@Resources.TableHeads.Update</th>
+                <th>@Resources.TableHeads.Delete</th>
             </tr>
+        </thead>
+        <tbody>
             @foreach (var sportman in Model)
             {
                 <tr>
@@ -34,10 +37,11 @@
                     <td><a asp-action="Create">@Resources.TableHeads.Delete</a></td>
                 </tr>
             }
-        </table>
-        <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>
-    </div>
+        </tbody>
+    </table>
+    <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>
 </div>
+@*</div>*@
 
 
 

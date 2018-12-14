@@ -12,8 +12,9 @@ namespace msac_competition.BLL.DTO
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Lastname { get; set; }
-        public DateTime DaTeOfBirth { get; set; }
-        public SportRank SportRank { get; set; }
+        public DateTime? DaTeOfBirth { get; set; }
+        public Sex Sex { get; set; }
+        public SportRank? SportRank { get; set; }
 
         public TeamDTO Team { get; set; }
 

@@ -15,6 +15,7 @@ namespace msac_competition.Models
         public string Lastname { get; set; }
         public DateTime DaTeOfBirth { get; set; }
         public SportRank SportRank { get; set; }
+        public Sex Sex { get; set; }
         public int? CoachId { get; set; }
         public CoachViewModel Coach { get; set; }
         public int? TeamId { get; set; }
@@ -22,5 +23,12 @@ namespace msac_competition.Models
         public string Avatar { get; set; }
         [NotMapped]
         public string CoachPib { get; set; }
+
+        public ICollection<CompetitionViewModel> Competitions { get; set; }
+
+        public SportmanViewModel()
+        {
+            Competitions = new List<CompetitionViewModel>();
+        }
     }
 }

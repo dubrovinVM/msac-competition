@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="beAttentive" xml:space="preserve">
+    <value>Будьте уважніше!</value>
+  </data>
   <data name="cityServiceNullException" xml:space="preserve">
     <value>CityService can't be null</value>
   </data>
@@ -125,6 +128,12 @@
   </data>
   <data name="competitionServiceNullException" xml:space="preserve">
     <value>CompetitionService can't be null</value>
+  </data>
+  <data name="errorHappened" xml:space="preserve">
+    <value>Сталася помилка!</value>
+  </data>
+  <data name="errorHappenedDuringRequest" xml:space="preserve">
+    <value>Сталася помилка під час виконання операції!</value>
   </data>
   <data name="fstServiceNullException" xml:space="preserve">
     <value>FstService can't be null</value>
@@ -137,5 +146,8 @@
   </data>
   <data name="teamServiceNullException" xml:space="preserve">
     <value>TeamService can't be null</value>
+  </data>
+  <data name="tryAgain" xml:space="preserve">
+    <value>Спробуйте ще раз!</value>
   </data>
 </root>

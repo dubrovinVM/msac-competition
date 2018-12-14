@@ -1,0 +1,47 @@
+﻿@model CoachViewModel
+@{
+    ViewData["Title"] = @Resources.Titles.deleteCoach;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3" >
+            <div style="text-align: center">
+                @{ var source = !string.IsNullOrEmpty(Model.Avatar) ? $"/images/coaches/{Model.Avatar}" : "/images/noPhoto.jpg";}
+                <img src="@source" style="height: 100px;" />
+            </div>
+            <div>
+                <dl class="dl-horizontal ">
+                    <dt>@Resources.TableHeads.Surname</dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Surname)
+                    </dd>
+                    <dt>@Resources.TableHeads.Firstname</dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt>@Resources.TableHeads.Lastname</dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Lastname)
+                    </dd>
+                    <dt>@Resources.TableHeads.Team</dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Team.Name)
+                    </dd>
+                </dl>
+                <hr />
+                <div style="text-align: center">
+                    <form asp-controller="Coach" asp-action="Delete" method="post">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-danger" value="@Resources.Buttons.Delete" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    dl {
+        margin-top: 25px;
+    }
+</style>

@@ -14,6 +14,7 @@ namespace msac_competition.DAL.Interfaces
     {
         IQueryable<T> Get<T>() where T : class;
         void Add<T>(T entity) where T : class;
+        Task AddAsync<T>(T entity) where T : class;
 
         void Remove<T>(T entity) where T : class;
         T GetSingle<T>(Expression<Func<T, bool>> predicate) where T : class;
@@ -21,6 +22,7 @@ namespace msac_competition.DAL.Interfaces
         DbContext GetContext();
         void Commit();
         Task CommitAsync();
+        IQueryable<T> GetAsNoTr<T>() where T : class;
 
         //IRepository<Competition> Competitions { get; }
         //IRepository<Team> Teams { get; }

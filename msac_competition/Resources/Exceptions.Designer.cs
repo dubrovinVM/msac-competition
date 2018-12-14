@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Будьте уважніше!.
+        /// </summary>
+        public static string beAttentive {
+            get {
+                return ResourceManager.GetString("beAttentive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CityService can&apos;t be null.
         /// </summary>
         public static string cityServiceNullException {
@@ -84,6 +93,24 @@ namespace Resources {
         public static string competitionServiceNullException {
             get {
                 return ResourceManager.GetString("competitionServiceNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сталася помилка!.
+        /// </summary>
+        public static string errorHappened {
+            get {
+                return ResourceManager.GetString("errorHappened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сталася помилка під час виконання операції!.
+        /// </summary>
+        public static string errorHappenedDuringRequest {
+            get {
+                return ResourceManager.GetString("errorHappenedDuringRequest", resourceCulture);
             }
         }
         
@@ -120,6 +147,15 @@ namespace Resources {
         public static string teamServiceNullException {
             get {
                 return ResourceManager.GetString("teamServiceNullException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спробуйте ще раз!.
+        /// </summary>
+        public static string tryAgain {
+            get {
+                return ResourceManager.GetString("tryAgain", resourceCulture);
             }
         }
     }

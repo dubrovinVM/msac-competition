@@ -7,6 +7,7 @@ using msac_competition.DAL.EF;
 using msac_competition.DAL.Interfaces;
 using msac_competition.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -16,7 +17,8 @@ namespace msac_competition.BLL.Infrastructure
     {
         public static IServiceCollection AddSqlContextDependencies(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<ApplicationContext>(options =>options.UseLazyLoadingProxies().UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationContext>(options =>options.UseLazyLoadingProxies().UseSqlServer(connectionString).EnableSensitiveDataLogging()
+                .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.DetachedLazyLoadingWarning)));
             return services;
         }
 

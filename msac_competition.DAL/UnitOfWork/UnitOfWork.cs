@@ -28,6 +28,15 @@ namespace msac_competition.DAL.Repositories
             _applicationContext.Set<T>().Add(entity);
         }
 
+        public async Task AddAsync<T>(T entity) where T : class
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException();
+            }
+            await _applicationContext.Set<T>().AddAsync(entity);
+        }
+
         public async Task CommitAsync()
         {
             await _applicationContext.SaveChangesAsync();
@@ -63,13 +72,23 @@ namespace msac_competition.DAL.Repositories
             return _applicationContext.Set<T>();
         }
 
+        public IQueryable<T> GetAsNoTr<T>() where T : class
+        {
+            return _applicationContext.Set<T>().AsNoTracking();
+        }
+
         public void Remove<T>(T entity) where T : class
         {
             if (entity == null)
             {
                 throw new ArgumentNullException();
             }
-            _applicationContext.Set<T>().Remove(entity);
+            _applicationContext.Remove(entity);
+        }
+
+        public void Detach<T>(T item) where T : class
+        {
+            _applicationContext.Entry(item).State = EntityState.Detached;
         }
     }
 }

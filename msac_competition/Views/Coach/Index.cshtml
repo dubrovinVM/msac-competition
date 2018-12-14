@@ -1,7 +1,53 @@
-﻿
+﻿@using msac_competition.DAL.Entities
+@model IList<CoachViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = @Resources.Titles.Coaches;
 }
 
-<h2>Index</h2>
+@*<div class="container">  *@
+<div class="row">
+    <h1>@Resources.Titles.Sportsmen</h1>
+    <table class="table table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>@Resources.TableHeads.Photo</th>
+                <th>@Resources.TableHeads.Surname</th>
+                <th>@Resources.TableHeads.Firstname</th>
+                <th>@Resources.TableHeads.Lastname</th>
+                <th>@Resources.TableHeads.Birthday</th>
+                <th>@Resources.TableHeads.Sportrank</th>
+                <th>@Resources.TableHeads.Sex</th>
+                <th>@Resources.TableHeads.Team</th>
+                <th>@Resources.TableHeads.Update</th>
+                <th>@Resources.TableHeads.Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var coach in Model)
+        {
+            var team = @coach.Team != null ? coach.Team.Name : "";
+            <tr>
+                <td>
+                    @{ var source = !string.IsNullOrEmpty(@coach.Avatar) ? $"/images/coaches/{@coach.Avatar}" : "/images/noPhoto.jpg";}
+                    <img src="@source" style="height: 30px;" />
+                </td>
+                <td>@coach.Surname</td>
+                <td>@coach.Name</td>
+                <td>@coach.Lastname</td>
+                <td>@coach.DaTeOfBirth</td>
+                <td>@coach.SportRank</td>
+                <th>@coach.Sex</th>
+                <td>@team</td>
+                <td><a asp-action="Edit" asp-route-id="@coach.Id">@Resources.TableHeads.Update</a></td>
+                <td><a asp-action="Delete" asp-route-id="@coach.Id">@Resources.TableHeads.Delete</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>
+</div>
+@*</div>*@
+
+
+
 

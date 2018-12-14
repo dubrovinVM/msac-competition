@@ -1,0 +1,102 @@
+﻿@using msac_competition.DAL.Entities
+@model CoachViewModel
+@{
+    ViewData["Title"] = @Resources.Titles.createCoach;
+}
+
+<h2>@Resources.Titles.createCoach</h2>
+<br/>
+
+<div class="has-error" asp-validation-summary="ModelOnly"></div>
+
+<form asp-action="Create" asp-controller="Coach" asp-antiforgery="true" enctype="multipart/form-data">
+    <table class="table">
+        <tr>
+            <td style="width: 20%"><label asp-for="Surname" class="control-label">@Resources.TableHeads.Surname</label></td>
+            <td  style="width: 20%"><input type="text" asp-for="Surname" class="form-control" required="required" /></td>
+            <td><span asp-validation-for="Name" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Name" class="control-label">@Resources.TableHeads.Firstname</label>
+            </td>
+            <td>
+                <input type="text" asp-for="Name" class="form-control"/>
+            </td>
+            <td><span asp-validation-for="Name" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Lastname" class="control-label">@Resources.TableHeads.Lastname</label>
+            </td>
+            <td>
+                <input type="text" asp-for="Lastname" class="form-control"/>
+            </td>
+            <td>
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="SportRank" class="control-label">@Resources.TableHeads.Sportrank</label>
+            </td>
+            <td>
+                <select asp-for="SportRank" asp-items="Html.GetEnumSelectList<SportRank>()" class="form-control">
+                    <option class="form-control" selected="selected" value="">-- Оберіть значення--</option>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="DaTeOfBirth" class="control-label">@Resources.TableHeads.Birthday</label>
+            </td>
+            <td>
+                <input type="date" asp-for="DaTeOfBirth" class="form-control" />
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Sex" class="control-label">@Resources.TableHeads.Sex</label>
+                <select asp-for="Sex" asp-items="Html.GetEnumSelectList<Sex>()" class="form-control">
+                    <option selected="selected" class="form-control" value="">-- Оберіть значення--</option>
+                </select>
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Avatar" class="control-label">@Resources.TableHeads.Photo</label>
+            </td>
+            <td>
+                <input type="file" id="ava" name="ava" class="form-control" />
+            </td>
+            <td></td>
+        </tr>
+       
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="@Resources.Buttons.Save" class="btn btn-default"/>
+    </div>
+</form>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"
+        asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+        asp-fallback-test="window.jQuery && window.jQuery.validator">
+</script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"
+        asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+        asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+</script>
