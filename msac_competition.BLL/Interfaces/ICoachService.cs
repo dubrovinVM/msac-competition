@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using msac_competition.BLL.DTO;
+using msac_competition.DAL.Entities;
 
 namespace msac_competition.BLL.Interfaces
 {
@@ -15,5 +16,6 @@ namespace msac_competition.BLL.Interfaces
         CoachDTO GetAsNoTrck(int id);
         Task CreateAsync(CoachDTO coachDTO, bool shouldBeCommited = false);
         void Delete(CoachDTO coachDTO, bool shouldBeCommited = false);
+        new void Update(CoachDTO coach, bool shouldBeCommited = false);
     }
 }

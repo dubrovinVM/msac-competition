@@ -54,22 +54,18 @@
             <td>
                 <input type="date" asp-for="DaTeOfBirth" class="form-control" />
             </td>
-            <td>
-            </td>
+            <td></td>
         </tr>
         <tr>
             <td>
                 <label asp-for="Sex" class="control-label">@Resources.TableHeads.Sex</label>
+            </td>
+            <td>
                 <select asp-for="Sex" asp-items="Html.GetEnumSelectList<Sex>()" class="form-control">
                     <option selected="selected" class="form-control" value="">-- Оберіть значення--</option>
                 </select>
             </td>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
+            <td></td>
         </tr>
         <tr>
             <td>

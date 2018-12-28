@@ -29,14 +29,14 @@
             <tr>
                 <td>
                     @{ var source = !string.IsNullOrEmpty(@coach.Avatar) ? $"/images/coaches/{@coach.Avatar}" : "/images/noPhoto.jpg";}
-                    <img src="@source" style="height: 30px;" />
+                    <img src="@source" style="height: 40px;width: 40px" />
                 </td>
                 <td>@coach.Surname</td>
                 <td>@coach.Name</td>
                 <td>@coach.Lastname</td>
                 <td>@coach.DaTeOfBirth</td>
                 <td>@coach.SportRank</td>
-                <th>@coach.Sex</th>
+                <td>@coach.Sex</td>
                 <td>@team</td>
                 <td><a asp-action="Edit" asp-route-id="@coach.Id">@Resources.TableHeads.Update</a></td>
                 <td><a asp-action="Delete" asp-route-id="@coach.Id">@Resources.TableHeads.Delete</a></td>

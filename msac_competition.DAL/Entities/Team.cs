@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using msac_competition.DAL.Interfaces;
 
@@ -9,6 +10,7 @@ namespace msac_competition.DAL.Entities
     public class Team : IEntity<int>
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string ShortName { get; set; }

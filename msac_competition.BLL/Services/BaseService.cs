@@ -102,10 +102,15 @@ namespace msac_competition.BLL.Services
 
         public virtual void Update(TEntity item, bool shouldBeCommited = false)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                throw new ArgumentNullException();
+            }
+            UnitOfWork.Update(item);
+            Commit(shouldBeCommited);
         }
 
-        public async Task<string> SaveAavatarAsync(IFormFile file, string surname, string imageFolder)
+        public async Task<string> SaveAvatarAsync(IFormFile file, string surname, string imageFolder)
         {
             try
             {
@@ -130,7 +135,7 @@ namespace msac_competition.BLL.Services
             }
         }
 
-        public void RemoveAavatar(string fileName, string imageFolder)
+        public void RemoveAvatar(string fileName, string imageFolder)
         {
             try
             {

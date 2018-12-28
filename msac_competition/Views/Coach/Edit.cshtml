@@ -41,11 +41,15 @@
                         <input type="date" asp-for="DaTeOfBirth" class="form-control" />
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(x => Model.SelectedTeam, htmlAttributes: new { @class = "control-label" })
-
-                        @Html.DropDownListFor(x => Model.SelectedTeam, new SelectList(Model.Teams, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = ""})
-
+                        @Html.LabelFor(x => Model.Team, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(x => Model.TeamId, new SelectList(Model.Teams, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = ""})
                     </div>
+                    <div>
+                        <label asp-for="Avatar" class="control-label">@Resources.TableHeads.Photo</label>
+                        <input type="file" id="ava" name="ava" class="form-control" />
+                    </div>
+                    <input asp-for="Avatar" type="hidden" class="form-control" />
+
                     <hr />
                     <div style="text-align: center">
                         <form asp-controller="Coach" asp-action="Delete" method="post">

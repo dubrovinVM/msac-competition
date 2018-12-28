@@ -24,6 +24,9 @@ namespace msac_competition.DAL.Interfaces
         Task CommitAsync();
         IQueryable<T> GetAsNoTr<T>() where T : class;
 
+        void Update<T>(T entity) where T : class;
+
+
         //IRepository<Competition> Competitions { get; }
         //IRepository<Team> Teams { get; }
         //void Save();

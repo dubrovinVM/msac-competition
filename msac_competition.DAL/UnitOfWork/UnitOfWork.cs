@@ -85,10 +85,16 @@ namespace msac_competition.DAL.Repositories
             }
             _applicationContext.Remove(entity);
         }
-
+        
         public void Detach<T>(T item) where T : class
         {
             _applicationContext.Entry(item).State = EntityState.Detached;
+        }
+
+        public void Update<T>(T item) where T : class
+        {
+            //_applicationContext.Entry(item).State = EntityState.Modified;
+            _applicationContext.Update(item);
         }
     }
 }

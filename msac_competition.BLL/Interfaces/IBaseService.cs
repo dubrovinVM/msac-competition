@@ -14,7 +14,7 @@ namespace msac_competition.BLL.Interfaces
         void Remove(T removeItem, bool shouldBeCommited = false);
         void Commit(bool shouldBeCommited = false);
         Task CommitAsync(bool shouldBeCommited = false);
-        Task<string> SaveAavatarAsync(IFormFile file, string surname, string imageFolder);
-        void RemoveAavatar(string fileName, string imageFolder);
+        Task<string> SaveAvatarAsync(IFormFile file, string surname, string imageFolder);
+        void RemoveAvatar(string fileName, string imageFolder);
     }
 }

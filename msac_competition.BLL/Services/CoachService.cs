@@ -62,13 +62,23 @@ namespace msac_competition.BLL.Services
         public void Delete(CoachDTO coachDTO, bool shouldBeCommited = false)
         {
             var coach = Mapper.Map<CoachDTO, Coach>(coachDTO);
-            RemoveAavatar(coach.Avatar, CoachFolder);
+            RemoveAvatar(coach.Avatar, CoachFolder);
             UnitOfWork.Remove(coach);
             if (shouldBeCommited)
             {
                 UnitOfWork.Commit();
             }
         }
-        
+
+        public async Task Update(CoachDTO coachDTO, bool commit)
+        {
+            var coach = Mapper.Map<CoachDTO, Coach>(coachDTO);
+            UnitOfWork.Update(coach);
+            if (commit)
+            {
+                await UnitOfWork.CommitAsync();
+            }
+        }
+
     }
 }

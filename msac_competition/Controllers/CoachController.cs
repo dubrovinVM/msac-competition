@@ -62,9 +62,8 @@ namespace msac_competition.Controllers
 
             if (ava!=null)
             {
-                coachDTO.Avatar = await _сoachService.SaveAavatarAsync(ava, coach.Surname, coachFolder);
+                coachDTO.Avatar = await _сoachService.SaveAvatarAsync(ava, coach.Surname, coachFolder);
             }
-
             await _сoachService.CreateAsync(coachDTO, true);
             return RedirectToAction("Index");
         }
@@ -111,6 +110,7 @@ namespace msac_competition.Controllers
             return errorMessage.ToString();
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id != null)
@@ -120,7 +120,6 @@ namespace msac_competition.Controllers
                 {
                     var coachViewModel = _mapper.Map<CoachDTO, CoachEditViewModel>(coach);
                     var teams = _teamService.GetAll().ToList();
-
                     coachViewModel.Teams = _teamService.GetTeamsSelectList();
                     return View("Edit", coachViewModel);
                 }
@@ -129,9 +128,20 @@ namespace msac_competition.Controllers
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(CoachEditViewModel coach)
+        public async Task<IActionResult> Edit(CoachEditViewModel coach, IFormFile ava)
         {
+            var oldCoach = _сoachService.Get(coach.Id);
            var coachDto = _mapper.Map<CoachEditViewModel, CoachDTO>(coach);
+            if (coach.TeamId !=0 )
+            {
+                var teamDto = _teamService.Get((int)coach.TeamId);
+                coachDto.Team = teamDto;
+            }
+            if (ava != null)
+            {
+                _сoachService.RemoveAvatar(oldCoach.Avatar, coachFolder);
+                coachDto.Avatar = await _сoachService.SaveAvatarAsync(ava, coach.Surname, coachFolder);
+            }
             _сoachService.Update(coachDto);
            return RedirectToAction("Index");
         }

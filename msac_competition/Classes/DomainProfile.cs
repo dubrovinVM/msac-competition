@@ -24,6 +24,12 @@ namespace msac_competition.Classes
 
             CreateMap<CoachDTO, CoachViewModel>();
 
+            CreateMap<CoachDTO, CoachEditViewModel>()
+                .ForMember(dto => dto.SelectedTeam, opt => opt.Ignore());
+
+            CreateMap<CoachEditViewModel, CoachDTO>();
+
+
             CreateMap<SportmanDTO, SportmanViewModel>()
                 .ForMember(dto => dto.CoachPib, opt => opt.MapFrom(x => (x.Coach.Surname +" "+ x.Coach.Name.Substring(0,1) +"."+ x.Coach.Lastname.Substring(0, 1) + ".") ));
 
