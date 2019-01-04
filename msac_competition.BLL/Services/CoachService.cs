@@ -17,66 +17,63 @@ using System.Linq;
 
 namespace msac_competition.BLL.Services
 {
-    public class CoachService : BaseService<CoachDTO, int>, ICoachService
+    public class CoachService: BaseService<Coach, int>, ICoachService
     {
         public string CoachFolder { get; set; }
 
-        //protected readonly IUnitOfWork UnitOfWork_internal;
+        protected readonly IRepository<Coach, int> __repository;
 
-        public CoachService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public CoachService(IRepository<Coach, int> repository) : base(repository)
         {
-            //UnitOfWork_internal = UnitOfWork;
+            __repository = _repository ?? repository;
         }
 
-        public CoachDTO GetAsNoTrck(int id)
+        public async Task<CoachDTO> Get(int id)
         {
-            var item = UnitOfWork.GetAsNoTr<Coach>().FirstOrDefault(a => a.Id == id);
+            var item = await __repository.GetById(id);
             var itemDto = Mapper.Map<Coach, CoachDTO>(item);
             return itemDto;
         }
 
-        public override CoachDTO Get(int id)
+        public async Task<CoachDTO> GetAsNoTrack(int id)
         {
-            var item = UnitOfWork.Get<Coach>().AsNoTracking().FirstOrDefault(a => a.Id == id);
-            var itemDto = Mapper.Map<Coach, CoachDTO>(item);
+            var item = await __repository.GetById(id);
+            var itemDto = Mapper.Map<Coach,CoachDTO>(item);
             return itemDto;
         }
 
-        public override IQueryable<CoachDTO> GetAll()
+        public async Task Create(CoachDTO coachDto, bool shouldBeCommited = false)
         {
-            var items = UnitOfWork.Get<Coach>().ToList();
+            var coach = Mapper.Map<CoachDTO, Coach>(coachDto);
+            await __repository.Create(coach);
+        }
+
+        public IList<CoachDTO> GetAll()
+        {
+            var items = __repository.GetAll().Include(a => a.Team);
             var itemDtos = Mapper.Map<IEnumerable<Coach>, IEnumerable<CoachDTO>>(items);
-            return itemDtos.AsQueryable();
-        }
-
-        public async Task CreateAsync(CoachDTO coachDTO, bool commit)
-        {
-            var coach = Mapper.Map<CoachDTO, Coach>(coachDTO);
-            await UnitOfWork.AddAsync(coach);
-            if (commit)
-            {
-                await UnitOfWork.CommitAsync();
-            }
+            return itemDtos.ToList();
         }
 
         public void Delete(CoachDTO coachDTO, bool shouldBeCommited = false)
         {
             var coach = Mapper.Map<CoachDTO, Coach>(coachDTO);
             RemoveAvatar(coach.Avatar, CoachFolder);
-            UnitOfWork.Remove(coach);
+            __repository.Delete(coachDTO.Id);
             if (shouldBeCommited)
             {
-                UnitOfWork.Commit();
+                _repository.CommitAsync();
             }
         }
 
-        public async Task Update(CoachDTO coachDTO, bool commit)
+        public async Task UpdateCoach(CoachDTO coachDTO, bool commit)
         {
             var coach = Mapper.Map<CoachDTO, Coach>(coachDTO);
-            UnitOfWork.Update(coach);
+            //coach.Team.CoachId = coach.Id;
+            __repository.Update(coach);
             if (commit)
             {
-                await UnitOfWork.CommitAsync();
+                await __repository.CommitAsync();
             }
         }
 

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace msac_competition.DAL.Interfaces
 {
-    public interface IEntity<T>
+    public interface IEntity<TKey>
     {
         [Key]
-        T Id { get; set; }
+        TKey Id { get; set; }
     }
 }

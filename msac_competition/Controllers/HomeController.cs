@@ -15,28 +15,32 @@ namespace msac_competition.Controllers
     public class HomeController : Controller
     {
         private ITeamService _teamService;
-        private ICompetitionService _competitionService;
+       // private ICompetitionService _competitionService;
         private readonly IMapper _mapper;
 
-        public HomeController(ITeamService teamService, ICompetitionService competitionService, IMapper mapper)
+        public HomeController(ITeamService teamService, IMapper mapper)
         {
             _teamService = teamService ?? throw new ArgumentNullException(Resources.Exceptions.teamServiceNullException);
-            _competitionService = competitionService ?? throw new ArgumentNullException(Resources.Exceptions.competitionServiceNullException);
+            //_competitionService = competitionService ?? throw new ArgumentNullException(Resources.Exceptions.competitionServiceNullException);
             _mapper = mapper ?? throw new ArgumentNullException(Resources.Exceptions.mapper);
         }
 
         public IActionResult Index()
         {
-            var competitionsDto = _competitionService.GetAll();
-            var competitions = _mapper.Map<IList<CompetitionViewModel>>(competitionsDto);
-            return View("Index", competitions);
+            return RedirectToAction("Index","Coach");
+            //var competitionsDto = _competitionService.GetAll();
+            //var competitions = _mapper.Map<IList<CompetitionViewModel>>(competitionsDto);
+            //return View("Index", competitions);
+            return View();
         }
 
         public IActionResult Add()
         {
-            var competitionsDto = _competitionService.GetAll();
-            var competitions = _mapper.Map<IList<CompetitionViewModel>>(competitionsDto);
-            return View("Index", competitions);
+            //var competitionsDto = _competitionService.GetAll();
+            //var competitions = _mapper.Map<IList<CompetitionViewModel>>(competitionsDto);
+            //return View("Index", competitions);
+            return View("Index");
+
         }
 
         public IActionResult About()

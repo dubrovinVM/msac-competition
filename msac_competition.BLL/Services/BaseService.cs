@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using msac_competition.BLL.BusinessModels;
 using msac_competition.BLL.Interfaces;
 using msac_competition.DAL.Interfaces;
@@ -13,101 +14,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace msac_competition.BLL.Services
 {
-    public class BaseService<TEntity, TPrimaryId> : IBaseService<TEntity, TPrimaryId> where TEntity : class, IEntity<TPrimaryId>
+    public class BaseService<TEntity, TKey> : IBaseService<TEntity, TKey> where TEntity : class, IEntity<TKey>
     {
-        protected readonly IUnitOfWork UnitOfWork;
+        protected readonly IRepository<TEntity, TKey> _repository;
 
-        public BaseService(IUnitOfWork unitOfWork)
+        public BaseService(IRepository<TEntity, TKey> genericRepository)
         {
-            UnitOfWork = unitOfWork;
-        }
-
-        public virtual void Commit(bool shouldBeCommited = false)
-        {
-            if (shouldBeCommited)
-            {
-                UnitOfWork.Commit();
-            }
-        }
-
-        public virtual async Task CommitAsync(bool shouldBeCommited = false)
-        {
-            if (shouldBeCommited)
-            {
-                await UnitOfWork.CommitAsync();
-            }
-        }
-
-        public virtual TEntity Create(TEntity newItem, bool shouldBeCommited = false)
-        {
-            if (newItem == null)
-            {
-                throw new ArgumentNullException();
-            }
-            UnitOfWork.Add(newItem);
-            Commit(shouldBeCommited);
-            return newItem;
-        }
-
-        public virtual async Task<TEntity> GetAsync(TPrimaryId id)
-        {
-            return await GetAll().FirstOrDefaultAsync(m => (object) m.Id == (object) id);
-        }
-
-        public virtual TEntity Get(TPrimaryId id)
-        {
-            return GetAll().FirstOrDefault(m => (object) m.Id == (object) id);
-        }
-
-        public virtual IQueryable<TEntity> GetAll()
-        {
-            return GetList<TEntity>();
-        }
-
-        protected virtual IQueryable<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class
-        {
-            var list = GetList<T>();
-            if (predicate != null)
-            {
-                return list.Where(predicate);
-            }
-            return list;
-        }
-
-        protected virtual IQueryable<T> GetList<T, TKey>(Expression<Func<T, bool>> predicate,
-            Expression<Func<T, TKey>> orderBy) where T : class
-        {
-            return GetList(predicate).OrderBy(orderBy);
-        }
-
-        protected virtual IQueryable<T> GetList<T, TKey>(Expression<Func<T, TKey>> orderBy) where T : class
-        {
-            return GetList<T>().OrderBy(orderBy);
-        }
-
-        protected virtual IQueryable<T> GetList<T>() where T : class
-        {
-            return UnitOfWork.Get<T>();
-        }
-
-        public virtual void Remove(TEntity removeItem, bool shouldBeCommited = false)
-        {
-            if (removeItem == null)
-            {
-                throw new ArgumentNullException();
-            }
-            UnitOfWork.Remove(removeItem);
-            Commit(shouldBeCommited);
-        }
-
-        public virtual void Update(TEntity item, bool shouldBeCommited = false)
-        {
-            if (item == null)
-            {
-                throw new ArgumentNullException();
-            }
-            UnitOfWork.Update(item);
-            Commit(shouldBeCommited);
+            _repository = genericRepository;
         }
 
         public async Task<string> SaveAvatarAsync(IFormFile file, string surname, string imageFolder)
@@ -116,9 +29,9 @@ namespace msac_competition.BLL.Services
             {
                 if (file != null && file.Length != 0)
                 {
-                    var extention = Path.GetExtension(file.FileName);
+                    var extenstion = Path.GetExtension(file.FileName);
                     var latSurname = Transliterate.Translit(surname);
-                    var fileNewName = string.Format($"{latSurname}{extention}");
+                    var fileNewName = string.Format($"{latSurname}{extenstion}");
                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", $"{imageFolder}", fileNewName);
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
@@ -139,7 +52,7 @@ namespace msac_competition.BLL.Services
         {
             try
             {
-                if (string.IsNullOrEmpty(fileName) && string.IsNullOrEmpty(imageFolder))
+                if (!string.IsNullOrEmpty(fileName) && !string.IsNullOrEmpty(imageFolder))
                 {
                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", $"{imageFolder}", fileName);
                     if (File.Exists(path))
@@ -153,6 +66,52 @@ namespace msac_competition.BLL.Services
                 return;
             }
         }
+
+        public virtual async Task CommitAsync(bool shouldBeCommited = false)
+        {
+            if (shouldBeCommited)
+            {
+                await _repository.CommitAsync();
+            }
+        }
+
+        public void Dispose()
+        {
+            _repository.Dispose();
+        }
+
+
+        //public async Task Create(TEntityDto newItem, bool shouldBeCommited = false)
+        //{
+        //    if (newItem == null)
+        //    {
+        //        throw new ArgumentNullException();
+        //    }
+        //    await _repository.Create(newItem);
+        //    await CommitAsync(shouldBeCommited);
+        //}
+
+        //public async Task Remove(TKey id, bool shouldBeCommited = false)
+        //{
+        //    if (id == null)
+        //    {
+        //        throw new ArgumentNullException();
+        //    }
+        //    await _repository.Delete(id);
+        //    await CommitAsync(shouldBeCommited);
+        //}
+
+        //public async Task Update(TEntityDto itemDto, bool shouldBeCommited = false)
+        //{
+        //    //if (itemDto == null)
+        //    //{
+        //    //    throw new ArgumentNullException();
+        //    //}
+        //    //var item = Mapper.Map<TEntity>(itemDto);
+        //    //await _repository.Update(item);
+        //    await CommitAsync(shouldBeCommited);
+        //}
+
 
     }
 }

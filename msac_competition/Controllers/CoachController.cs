@@ -45,6 +45,73 @@ namespace msac_competition.Controllers
             return View("Index", items);
         }
 
+        
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id != null)
+            {
+                var coach = await _сoachService.Get((int)id);
+                if (coach != null)
+                {
+                    var coachViewModel = _mapper.Map<CoachDTO, CoachEditViewModel>(coach);
+                    coachViewModel.Teams = _teamService.GetTeamsSelectList();
+                    return View("Edit", coachViewModel);
+                }
+                return NotFound();
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(CoachEditViewModel coach, IFormFile ava)
+        {
+            var coachDto = _mapper.Map<CoachEditViewModel, CoachDTO>(coach);
+            if (coach.TeamId != null)
+            {
+                var teamDto = _teamService.GetAll().FirstOrDefault(a => a.Id == coach.TeamId);
+                if (teamDto != null)
+                {
+                    teamDto.CoachId = coach.Id;
+                    //await _teamService.Update(teamDto);
+                    coachDto.Team = teamDto;
+                }
+            }
+            else
+            {
+                coachDto.Team = null;
+            }
+            await _сoachService.UpdateCoach(coachDto, true);
+
+            if (ava != null)
+            {
+                _сoachService.RemoveAvatar(coachDto.Avatar, coachFolder);
+                coachDto.Avatar = await _сoachService.SaveAvatarAsync(ava, coach.Surname, coachFolder);
+            }
+            
+            return RedirectToAction("Index");
+        }
+
+        public IEnumerable<SelectListItem> CastTeams()
+        {
+                List<SelectListItem> teams = _teamService.GetAll().AsNoTracking()
+                    .OrderBy(n => n.Name)
+                    .Select(n =>
+                        new SelectListItem
+                        {
+                            Value = n.Id.ToString(),
+                            Text = n.Name
+                        }).ToList();
+                var teams_nullable = new SelectListItem()
+                {
+                    Value = null,
+                    Text = "--- оберіть значення ---"
+                };
+                teams.Insert(0, teams_nullable);
+                return new SelectList(teams, "Value", "Text");
+            
+        }
+
         public IActionResult Create()
         {
             return View();
@@ -60,11 +127,11 @@ namespace msac_competition.Controllers
             }
             var coachDTO = _mapper.Map<CoachDTO>(coach);
 
-            if (ava!=null)
+            if (ava != null)
             {
                 coachDTO.Avatar = await _сoachService.SaveAvatarAsync(ava, coach.Surname, coachFolder);
             }
-            await _сoachService.CreateAsync(coachDTO, true);
+            await _сoachService.Create(coachDTO, true);
             return RedirectToAction("Index");
         }
 
@@ -76,7 +143,7 @@ namespace msac_competition.Controllers
             {
                 var coach = _сoachService.GetAll().FirstOrDefault(p => p.Id == id);
                 if (coach == null) return NotFound();
-                var coachViewModel = _mapper.Map<CoachDTO,CoachViewModel>(coach);
+                var coachViewModel = _mapper.Map<CoachDTO, CoachViewModel>(coach);
                 return View("Delete", coachViewModel);
             }
             return NotFound();
@@ -87,7 +154,7 @@ namespace msac_competition.Controllers
         {
             if (id != null)
             {
-                var coach = _сoachService.GetAsNoTrck((int)id);
+                var coach = await _сoachService.GetAsNoTrack((int)id);
                 if (coach != null)
                 {
                     _сoachService.Delete(coach, true);
@@ -110,61 +177,6 @@ namespace msac_competition.Controllers
             return errorMessage.ToString();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id != null)
-            {
-                var coach = _сoachService.Get((int)id);
-                if (coach != null)
-                {
-                    var coachViewModel = _mapper.Map<CoachDTO, CoachEditViewModel>(coach);
-                    var teams = _teamService.GetAll().ToList();
-                    coachViewModel.Teams = _teamService.GetTeamsSelectList();
-                    return View("Edit", coachViewModel);
-                }
-                return NotFound();
-            }
-            return NotFound();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Edit(CoachEditViewModel coach, IFormFile ava)
-        {
-            var oldCoach = _сoachService.Get(coach.Id);
-           var coachDto = _mapper.Map<CoachEditViewModel, CoachDTO>(coach);
-            if (coach.TeamId !=0 )
-            {
-                var teamDto = _teamService.Get((int)coach.TeamId);
-                coachDto.Team = teamDto;
-            }
-            if (ava != null)
-            {
-                _сoachService.RemoveAvatar(oldCoach.Avatar, coachFolder);
-                coachDto.Avatar = await _сoachService.SaveAvatarAsync(ava, coach.Surname, coachFolder);
-            }
-            _сoachService.Update(coachDto);
-           return RedirectToAction("Index");
-        }
-
-        public IEnumerable<SelectListItem> CastTeams()
-        {
-                List<SelectListItem> teams = _teamService.GetAll().AsNoTracking()
-                    .OrderBy(n => n.Name)
-                    .Select(n =>
-                        new SelectListItem
-                        {
-                            Value = n.Id.ToString(),
-                            Text = n.Name
-                        }).ToList();
-                var teams_nullable = new SelectListItem()
-                {
-                    Value = null,
-                    Text = "--- оберіть значення ---"
-                };
-                teams.Insert(0, teams_nullable);
-                return new SelectList(teams, "Value", "Text");
-            
-        }
 
     }
 }

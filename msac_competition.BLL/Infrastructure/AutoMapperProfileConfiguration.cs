@@ -23,6 +23,7 @@ namespace msac_competition.BLL.Infrastructure
 
                 cfg.CreateMap<Team, TeamDTO>()
                     .ForMember(m => m.Competitions, opt => opt.MapFrom(a => a.TeamCompetitions.Select(c => c.Competition).ToList()));
+
                 cfg.CreateMap<TeamDTO, Team>();
 
                 cfg.CreateMap<Fst, FstDTO>();
@@ -30,8 +31,11 @@ namespace msac_competition.BLL.Infrastructure
 
                 cfg.CreateMap<City, CityDTO>();
 
-                cfg.CreateMap<Coach, CoachDTO>();
-                cfg.CreateMap<CoachDTO, Coach>();
+                cfg.CreateMap<Coach, CoachDTO>()
+                .ForMember(dto => dto.Team, opt => opt.MapFrom(x => x.Team));
+                    
+                cfg.CreateMap<CoachDTO, Coach>()
+                    .ForMember(dto => dto.Team, opt => opt.MapFrom(x => x.Team));
 
                 cfg.CreateMap<SportmanDTO, Sportman>();
                 cfg.CreateMap<Sportman, SportmanDTO>().

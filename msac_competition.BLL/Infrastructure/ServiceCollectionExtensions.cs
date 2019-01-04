@@ -24,13 +24,15 @@ namespace msac_competition.BLL.Infrastructure
 
         public static IServiceCollection AddUnitOfWorkDependencies(this IServiceCollection services)
         {
-            services.AddScoped<IUnitOfWork, UnitOfWork>().AddDbContext<ApplicationContext>();
+            //services.AddScoped<IRepository, GenericRepository>().AddDbContext<ApplicationContext>();
+            services.AddScoped(typeof(IRepository<,>), typeof(GenericRepository<,>)).AddDbContext<ApplicationContext>();
+
             services.AddScoped<ITeamService, TeamService>();
-            services.AddScoped<ICompetitionService, CompetitionService>();
-            services.AddScoped<IFstService, FstService>();
-            services.AddScoped<ISportmanService, SportmanService>();
             services.AddScoped<ICoachService, CoachService>();
-            services.AddScoped<ICityService, CityService>();
+            //services.AddScoped<ICompetitionService, CompetitionService>();
+            //services.AddScoped<IFstService, FstService>();
+            //services.AddScoped<ISportmanService, SportmanService>();
+            //services.AddScoped<ICityService, CityService>();
             return services;
         }
     }

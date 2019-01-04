@@ -7,12 +7,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace msac_competition.BLL.Interfaces
 {
-    public interface IBaseService<T, TKey> where T : class
+    public interface IBaseService<TEntity, TPrimaryId> where TEntity : class 
     {
-        void Update(T item, bool shouldBeCommited = false);
-        T Create(T item, bool shouldBeCommited = false);
-        void Remove(T removeItem, bool shouldBeCommited = false);
-        void Commit(bool shouldBeCommited = false);
+        //Task Update(TDto item, bool shouldBeCommited = false);
+        //Task Create(TDto item, bool shouldBeCommited = false);
+        //Task Remove(TPrimaryId id, bool shouldBeCommited = false);
         Task CommitAsync(bool shouldBeCommited = false);
         Task<string> SaveAvatarAsync(IFormFile file, string surname, string imageFolder);
         void RemoveAvatar(string fileName, string imageFolder);

@@ -8,14 +8,14 @@ using msac_competition.DAL.Entities;
 
 namespace msac_competition.BLL.Interfaces
 {
-    public interface ICoachService : IBaseService<CoachDTO, int>
+    public interface ICoachService : IBaseService<Coach, int>, IDisposable
     {
         string CoachFolder { get; set; }
-        IQueryable<CoachDTO> GetAll();
-        CoachDTO Get(int id);
-        CoachDTO GetAsNoTrck(int id);
-        Task CreateAsync(CoachDTO coachDTO, bool shouldBeCommited = false);
-        void Delete(CoachDTO coachDTO, bool shouldBeCommited = false);
-        new void Update(CoachDTO coach, bool shouldBeCommited = false);
+        IList<CoachDTO> GetAll();
+        Task<CoachDTO> Get(int id);
+        Task <CoachDTO> GetAsNoTrack(int id);
+        Task Create(CoachDTO coachDto, bool shouldBeCommited = false);
+        void Delete(CoachDTO coachDto, bool shouldBeCommited = false);
+        Task UpdateCoach(CoachDTO coachDto, bool shouldBeCommited = false);
     }
 }
