@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не коректний запит!.
+        /// </summary>
+        public static string notCorrectRequest {
+            get {
+                return ResourceManager.GetString("notCorrectRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SportmanService can&apos;t be null.
         /// </summary>
         public static string sportmanServiceNullException {

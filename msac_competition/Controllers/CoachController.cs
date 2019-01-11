@@ -24,14 +24,16 @@ namespace msac_competition.Controllers
     {
         private ICoachService _сoachService;
         private ITeamService _teamService;
+        private ICityService _cityService;
         private IConfiguration _configuration;
         private string coachFolder { get; set; }
         private readonly IMapper _mapper;
 
-        public CoachController(ITeamService teamService, ICoachService сoachService, IMapper mapper, IConfiguration configuration)
+        public CoachController(ITeamService teamService, ICoachService сoachService, IMapper mapper, IConfiguration configuration, ICityService cityService)
         {
             _teamService = teamService ?? throw new ArgumentNullException(Resources.Exceptions.teamServiceNullException);
             _сoachService = сoachService ?? throw new ArgumentNullException(Resources.Exceptions.coachServiceNullException);
+            _cityService = cityService ?? throw new ArgumentNullException(Resources.Exceptions.coachServiceNullException);
             _mapper = mapper ?? throw new ArgumentNullException(Resources.Exceptions.mapper);
             _configuration = configuration;
             coachFolder = _configuration.GetValue<string>("avatar:coach");
@@ -45,123 +47,121 @@ namespace msac_competition.Controllers
             return View("Index", items);
         }
 
-        
-        [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id != null)
-            {
-                var coach = await _сoachService.Get((int)id);
-                if (coach != null)
-                {
-                    var coachViewModel = _mapper.Map<CoachDTO, CoachEditViewModel>(coach);
-                    coachViewModel.Teams = _teamService.GetTeamsSelectList();
-                    return View("Edit", coachViewModel);
-                }
-                return NotFound();
-            }
-            return NotFound();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(CoachEditViewModel coach, IFormFile ava)
-        {
-            var coachDto = _mapper.Map<CoachEditViewModel, CoachDTO>(coach);
-            if (coach.TeamId != null)
-            {
-                var teamDto = _teamService.GetAll().FirstOrDefault(a => a.Id == coach.TeamId);
-                if (teamDto != null)
-                {
-                    teamDto.CoachId = coach.Id;
-                    //await _teamService.Update(teamDto);
-                    coachDto.Team = teamDto;
-                }
-            }
-            else
-            {
-                coachDto.Team = null;
-            }
-            await _сoachService.UpdateCoach(coachDto, true);
-
-            if (ava != null)
-            {
-                _сoachService.RemoveAvatar(coachDto.Avatar, coachFolder);
-                coachDto.Avatar = await _сoachService.SaveAvatarAsync(ava, coach.Surname, coachFolder);
-            }
-            
-            return RedirectToAction("Index");
-        }
-
-        public IEnumerable<SelectListItem> CastTeams()
-        {
-                List<SelectListItem> teams = _teamService.GetAll().AsNoTracking()
-                    .OrderBy(n => n.Name)
-                    .Select(n =>
-                        new SelectListItem
-                        {
-                            Value = n.Id.ToString(),
-                            Text = n.Name
-                        }).ToList();
-                var teams_nullable = new SelectListItem()
-                {
-                    Value = null,
-                    Text = "--- оберіть значення ---"
-                };
-                teams.Insert(0, teams_nullable);
-                return new SelectList(teams, "Value", "Text");
-            
-        }
-
         public IActionResult Create()
         {
+            ViewBag.Teams = _teamService.GetTeamsSelectList();
+            ViewBag.Cities = _cityService.GetCitysSelectList();
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CoachViewModel coach, IFormFile ava)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || coach == null)
             {
                 ViewBag.Error = CreateError();
                 return View("Error");
             }
-            var coachDTO = _mapper.Map<CoachDTO>(coach);
-
-            if (ava != null)
-            {
-                coachDTO.Avatar = await _сoachService.SaveAvatarAsync(ava, coach.Surname, coachFolder);
-            }
-            await _сoachService.Create(coachDTO, true);
+            var coachDto = _mapper.Map<CoachDTO>(coach);
+            var addedCoach = await _сoachService.Create(coachDto, ava, true);
+            await UpdateTeam(coach.TeamId, addedCoach.Id);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        [ActionName("Delete")]
-        public async Task<IActionResult> ConfirmDelete(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id != null)
+            if (id == null)
             {
-                var coach = _сoachService.GetAll().FirstOrDefault(p => p.Id == id);
-                if (coach == null) return NotFound();
-                var coachViewModel = _mapper.Map<CoachDTO, CoachViewModel>(coach);
-                return View("Delete", coachViewModel);
+                @TempData["Error"] = @Resources.Exceptions.notCorrectRequest;
+                return RedirectToAction("Error", "Home");
             }
-            return NotFound();
+            var coach = _сoachService.GetAll().FirstOrDefault(a=>a.Id == id);
+            if (coach == null)
+            {
+                @TempData["Error"] = @Resources.Exceptions.notCorrectRequest;
+                return RedirectToAction("Error", "Home");
+            }
+            var coachViewModel = _mapper.Map<CoachDTO, CoachEditViewModel>(coach);
+            coachViewModel.Teams = _teamService.GetTeamsSelectList();
+            coachViewModel.Cities = _cityService.GetCitysSelectList();
+            return View("Edit", coachViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(CoachEditViewModel coach, IFormFile ava)
+        {
+            try
+            {
+                var coachDto = _mapper.Map<CoachEditViewModel, CoachDTO>(coach);
+                coachDto.Team = await UpdateTeam(coach.TeamId, coach.Id);
+                await _сoachService.UpdateCoach(coachDto, ava, true);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                @TempData["Error"] = ex.Message+"\n\n"+ex.InnerException?.Message;
+                return RedirectToAction("Error","Home");
+            }
+        }
+
+        public async Task<TeamDTO> UpdateTeam(int? teamId, int? coachId)
+        {
+            if (teamId != null)
+            {
+                var selectedTeamDto = await _teamService.GetById((int)teamId);
+                if (selectedTeamDto != null)
+                {
+                    await _teamService.SetTeamCoachToNull(coachId);
+                    selectedTeamDto.CoachId = coachId;
+                    await _teamService.Update(selectedTeamDto, true);
+                    return selectedTeamDto;
+                }
+            }
+            else
+            {
+                await _teamService.SetTeamCoachToNull(coachId);
+            }
+            return null;
+        }
+
+       
+
+        [HttpGet]
+        [ActionName("Delete")]
+        public IActionResult ConfirmDelete(int? id)
+        {
+            if (id == null)
+            {
+                @TempData["Error"] = @Resources.Exceptions.notCorrectRequest;
+                return RedirectToAction("Error", "Home");
+            }
+            var coach = _сoachService.GetAll().FirstOrDefault(a => a.Id == id);
+            if (coach == null)
+            {
+                @TempData["Error"] = @Resources.Exceptions.notCorrectRequest;
+                return RedirectToAction("Error", "Home");
+            }
+            var coachViewModel = _mapper.Map<CoachDTO, CoachViewModel>(coach);
+            return View("Delete", coachViewModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id != null)
+            if (id == null)
             {
-                var coach = await _сoachService.GetAsNoTrack((int)id);
-                if (coach != null)
-                {
-                    _сoachService.Delete(coach, true);
-                    return RedirectToAction("Index");
-                }
+                @TempData["Error"] = @Resources.Exceptions.notCorrectRequest;
+                return RedirectToAction("Error", "Home");
             }
-            return NotFound();
+            var coach = await _сoachService.GetByIdAsNoTrack((int)id);
+            if (coach == null)
+            {
+                @TempData["Error"] = @Resources.Exceptions.notCorrectRequest;
+                return RedirectToAction("Error", "Home");
+            }
+            await _сoachService.Delete(coach, true);
+            return RedirectToAction("Index");
         }
 
         public string CreateError()
@@ -175,6 +175,13 @@ namespace msac_competition.Controllers
                 }
             }
             return errorMessage.ToString();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _teamService.Dispose();
+            _сoachService.Dispose();
+            base.Dispose(disposing);
         }
 
 

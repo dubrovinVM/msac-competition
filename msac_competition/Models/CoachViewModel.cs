@@ -33,7 +33,13 @@ namespace msac_competition.Models
         [Display(Name = "Team", ResourceType = typeof(@Resources.TableHeads))]
         public TeamViewModel Team { get; set; }
 
+        public int? CityId { get; set; }
+        [Display(Name = "City", ResourceType = typeof(@Resources.TableHeads))]
+        public CityViewModel City { get; set; }
+
         public List<SportmanViewModel> Sportmen { get; set; }
+
+        public List<SportmanViewModel> Cities { get; set; }
 
         public CoachViewModel()
         {

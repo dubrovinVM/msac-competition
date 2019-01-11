@@ -123,6 +123,9 @@
   <data name="Birthday" xml:space="preserve">
     <value>Дата народження</value>
   </data>
+  <data name="City" xml:space="preserve">
+    <value>Місто</value>
+  </data>
   <data name="Coach" xml:space="preserve">
     <value>Тренер</value>
   </data>

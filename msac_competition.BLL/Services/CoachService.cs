@@ -13,68 +13,99 @@ using msac_competition.DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
 
 namespace msac_competition.BLL.Services
 {
     public class CoachService: BaseService<Coach, int>, ICoachService
     {
+
+        IUnitOfWork __repository { get; set; }
+        private IConfiguration _configuration;
         public string CoachFolder { get; set; }
+        private ITeamService _teamService;
 
-        protected readonly IRepository<Coach, int> __repository;
-
-        public CoachService(IRepository<Coach, int> repository) : base(repository)
+        public CoachService(IUnitOfWork repository, IConfiguration configuration, ITeamService teamService)
         {
-            __repository = _repository ?? repository;
+            _configuration = configuration;
+            CoachFolder = _configuration.GetValue<string>("avatar:coach");
+            __repository = repository;
+            _teamService = teamService;
         }
 
-        public async Task<CoachDTO> Get(int id)
+        public async Task<CoachDTO> GetById(int id)
         {
-            var item = await __repository.GetById(id);
+            var item = await __repository.Coaches.GetById(id);
             var itemDto = Mapper.Map<Coach, CoachDTO>(item);
             return itemDto;
         }
 
-        public async Task<CoachDTO> GetAsNoTrack(int id)
+        public async Task<CoachDTO> GetByIdAsNoTrack(int id)
         {
-            var item = await __repository.GetById(id);
+            var item = await __repository.Coaches.GetByIdAsNoTrack(id);
             var itemDto = Mapper.Map<Coach,CoachDTO>(item);
             return itemDto;
         }
 
-        public async Task Create(CoachDTO coachDto, bool shouldBeCommited = false)
+        public async Task<CoachDTO> Create(CoachDTO coachDto, IFormFile ava, bool shouldBeCommited = false)
         {
+            if (ava != null)
+            {
+                coachDto.Avatar = await SaveAvatarAsync(ava, coachDto.Surname, CoachFolder);
+            }
             var coach = Mapper.Map<CoachDTO, Coach>(coachDto);
-            await __repository.Create(coach);
+            var newItem = await __repository.Coaches.Create(coach);
+            await __repository.CommitAsync();
+            return Mapper.Map<Coach,CoachDTO>(newItem);
         }
 
         public IList<CoachDTO> GetAll()
         {
-            var items = __repository.GetAll().Include(a => a.Team);
+            var items = __repository.Coaches.GetAll().Include(a=>a.Team).Include(b=>b.City);
             var itemDtos = Mapper.Map<IEnumerable<Coach>, IEnumerable<CoachDTO>>(items);
             return itemDtos.ToList();
         }
 
-        public void Delete(CoachDTO coachDTO, bool shouldBeCommited = false)
+        public async Task Delete(CoachDTO coachDTO, bool shouldBeCommited = false)
         {
             var coach = Mapper.Map<CoachDTO, Coach>(coachDTO);
             RemoveAvatar(coach.Avatar, CoachFolder);
-            __repository.Delete(coachDTO.Id);
+            await _teamService.SetTeamCoachToNull(coachDTO.Id);
+            await __repository.Coaches.Delete(coachDTO.Id);
             if (shouldBeCommited)
             {
-                _repository.CommitAsync();
+                __repository.Commit();
             }
         }
 
-        public async Task UpdateCoach(CoachDTO coachDTO, bool commit)
+        public async Task UpdateCoach(CoachDTO coachDTO, IFormFile ava, bool commit)
         {
+            if (ava != null)
+            {
+                RemoveAvatar(coachDTO.Avatar, CoachFolder);
+                coachDTO.Avatar = await SaveAvatarAsync(ava, coachDTO.Surname, CoachFolder);
+            }
+
             var coach = Mapper.Map<CoachDTO, Coach>(coachDTO);
-            //coach.Team.CoachId = coach.Id;
-            __repository.Update(coach);
+            __repository.Coaches.Update(coach);
             if (commit)
             {
                 await __repository.CommitAsync();
             }
+        }
+
+        public virtual async Task CommitAsync(bool shouldBeCommited = false)
+        {
+            if (shouldBeCommited)
+            {
+                await __repository.CommitAsync();
+            }
+        }
+
+        public override void Dispose()
+        {
+            __repository.Dispose();
         }
 
     }

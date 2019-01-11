@@ -22,6 +22,9 @@ namespace msac_competition.DAL.Entities
         public virtual Team Team { get; set; }
         public virtual List<Sportman> Sportmen { get; set; }
 
+        public int? CityId { get; set; }
+        public virtual City City { get; set; }
+
         public string Avatar { get; set; }
 
         public Coach()

@@ -2,36 +2,34 @@
 @{
     ViewData["Title"] = @Resources.Titles.FST;
 }
-
-<div class="container">
-    <div class="row">
-        <h1>@Resources.Titles.FST</h1>
-        <table class="table">
+<div class="row">
+    <h1>@Resources.Titles.FST</h1>
+    <table class="table">
+        <tr>
+            <td>@Resources.TableHeads.Fst</td>
+            <td>@Resources.TableHeads.Teams</td>
+            <td>@Resources.TableHeads.Update</td>
+            <td>@Resources.TableHeads.Delete</td>
+        </tr>
+        @foreach (var fst in Model)
+        {
             <tr>
-                <td>@Resources.TableHeads.Fst</td>
-                <td>@Resources.TableHeads.Teams</td>
-                <td>@Resources.TableHeads.Update</td>
-                <td>@Resources.TableHeads.Delete</td>
+                <td>@fst.Name</td>
+                <td>
+                    <ul>
+                        @foreach (var team in fst.Teams)
+                        {
+                            <li><a>@team?.Name (@team?.City?.Name @team?.City?.Region?.Name)</a></li>
+                        }
+                    </ul>
+                </td>
+                <td><a asp-action="Create">@Resources.TableHeads.Update</a></td>
+                <td><a asp-action="Create">@Resources.TableHeads.Delete</a></td>
             </tr>
-            @foreach (var fst in Model)
-            {
-                <tr>
-                    <td>@fst.Name</td>
-                    <td>
-                        <ul>
-                            @foreach (var team in fst.Teams)
-                            {
-                                <li><a>@team.Name (@team.City.Name @team.City.Region.Name)</a></li>
-                            }
-                        </ul>
-                    </td>
-                    <td><a asp-action="Create">@Resources.TableHeads.Update</a></td>
-                    <td><a asp-action="Create">@Resources.TableHeads.Delete</a></td>
-                </tr>
-            }
-        </table>
-        <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>
-    </div>
+        }
+    </table>
+    <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>
 </div>
+
 
 

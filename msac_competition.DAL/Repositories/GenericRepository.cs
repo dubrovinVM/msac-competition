@@ -26,7 +26,13 @@ namespace msac_competition.DAL.Repositories
 
         public void Update(TEntity item)
         {
-            _applicationContext.Set<TEntity>().Update(item);
+            if (item == null) return;
+            var exist = _applicationContext.Set<TEntity>().Find(item.Id);
+            if (exist != null)
+            {
+                _applicationContext.Entry(exist).CurrentValues.SetValues(item);
+            }
+            //_applicationContext.Set<TEntity>().Update(item);
         }
 
         public IQueryable<TEntity> GetAll()
@@ -36,12 +42,18 @@ namespace msac_competition.DAL.Repositories
 
         public async Task<TEntity> GetById(TKey id)
         {
+            return await _applicationContext.Set<TEntity>().FirstOrDefaultAsync(e => Equals(e.Id, id));
+        }
+
+        public async Task<TEntity> GetByIdAsNoTrack(TKey id)
+        {
             return await _applicationContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => Equals(e.Id, id));
         }
 
-        public async Task Create(TEntity entity)
+        public async Task<TEntity> Create(TEntity entity)
         {
             await _applicationContext.Set<TEntity>().AddAsync(entity);
+            return entity;
         }
 
         public async Task Delete(TKey id)

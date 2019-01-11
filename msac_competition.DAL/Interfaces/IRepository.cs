@@ -10,11 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace msac_competition.DAL.Interfaces
 {
-    public interface IRepository<TEntity, in TKey>: IDisposable where TEntity : class, IEntity<TKey>
+    public interface IRepository<TEntity, in TKey> where TEntity : class, IEntity<TKey>
     {
         IQueryable<TEntity> GetAll();
+        Task<TEntity> GetByIdAsNoTrack(TKey id);
         Task<TEntity> GetById(TKey id);
-        Task Create(TEntity entity);
+        Task<TEntity> Create(TEntity entity);
         Task Delete(TKey id);
         Task CommitAsync();
         void Update(TEntity item);

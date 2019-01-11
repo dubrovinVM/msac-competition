@@ -19,6 +19,8 @@ namespace msac_competition.Classes
 
             CreateMap<TeamDTO, TeamViewModel>();
 
+            CreateMap<CityDTO, CityViewModel>();
+
             CreateMap<FstDTO, FstViewModel>()
                 .ForMember(dto => dto.Teams, opt => opt.MapFrom(x => x.Teams));
 
@@ -32,6 +34,9 @@ namespace msac_competition.Classes
 
             CreateMap<SportmanDTO, SportmanViewModel>()
                 .ForMember(dto => dto.CoachPib, opt => opt.MapFrom(x => (x.Coach.Surname +" "+ x.Coach.Name.Substring(0,1) +"."+ x.Coach.Lastname.Substring(0, 1) + ".") ));
+
+            //CreateMap<CityDTO, CityViewModel>()
+            //    .ForMember(dto => dto.SelectedTeam, opt => opt.Ignore());
 
         }
     }

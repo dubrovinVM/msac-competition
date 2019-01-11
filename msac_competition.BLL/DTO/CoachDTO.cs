@@ -18,6 +18,9 @@ namespace msac_competition.BLL.DTO
 
         public TeamDTO Team { get; set; }
 
+        public int? CityId { get; set; }
+        public CityDTO City { get; set; }
+
         public List<SportmanDTO> Sportmen { get; set; }
 
         public string Avatar { get; set; }

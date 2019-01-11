@@ -17,10 +17,11 @@ namespace msac_competition.DAL.Entities
         public virtual Region Region { get; set; }
 
         public virtual List<Team> Teams { get; set; }
-
+        public virtual List<Coach> Coaches { get; set; }
         public City()
         {
             Teams = new List<Team>();
+            Coaches = new List<Coach>();
         }
     }
 }

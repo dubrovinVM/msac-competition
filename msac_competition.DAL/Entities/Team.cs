@@ -34,6 +34,7 @@ namespace msac_competition.DAL.Entities
             Sportmen = new List<Sportman>();
         }
 
+
         public string Logo { get; set; }
 
     }

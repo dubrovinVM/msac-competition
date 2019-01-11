@@ -1,4 +1,5 @@
-﻿@using msac_competition.DAL.Entities
+﻿@using msac_competition.Classes
+@using msac_competition.DAL.Entities
 @model IList<CoachViewModel>
 @{
     ViewData["Title"] = @Resources.Titles.Coaches;
@@ -6,7 +7,7 @@
 
 @*<div class="container">  *@
 <div class="row">
-    <h1>@Resources.Titles.Sportsmen</h1>
+    <h1>@Resources.Titles.Coaches</h1>
     <table class="table table-striped table-condensed">
         <thead>
             <tr>
@@ -18,6 +19,7 @@
                 <th>@Resources.TableHeads.Sportrank</th>
                 <th>@Resources.TableHeads.Sex</th>
                 <th>@Resources.TableHeads.Team</th>
+                <th>@Resources.TableHeads.City</th>
                 <th>@Resources.TableHeads.Update</th>
                 <th>@Resources.TableHeads.Delete</th>
             </tr>
@@ -26,6 +28,10 @@
         @foreach (var coach in Model)
         {
             var team = @coach.Team != null ? coach.Team.Name : "";
+            var city = @coach.City != null ? coach.City.Name : "";
+            var sex = ((Sex)@coach.Sex).GetDisplayName();
+            var sportRank = @coach.SportRank != null ? ((SportRank)@coach.SportRank).GetDisplayName() : String.Empty;
+            var daTeOfBirth = @coach.DaTeOfBirth != null ? $"{@coach.DaTeOfBirth:dd.MM.yyyy}" : String.Empty;
             <tr>
                 <td>
                     @{ var source = !string.IsNullOrEmpty(@coach.Avatar) ? $"/images/coaches/{@coach.Avatar}" : "/images/noPhoto.jpg";}
@@ -34,10 +40,11 @@
                 <td>@coach.Surname</td>
                 <td>@coach.Name</td>
                 <td>@coach.Lastname</td>
-                <td>@coach.DaTeOfBirth</td>
-                <td>@coach.SportRank</td>
-                <td>@coach.Sex</td>
+                <td>@daTeOfBirth</td>
+                <td>@sportRank</td>
+                <td>@sex</td>
                 <td>@team</td>
+                <td>@city</td>
                 <td><a asp-action="Edit" asp-route-id="@coach.Id">@Resources.TableHeads.Update</a></td>
                 <td><a asp-action="Delete" asp-route-id="@coach.Id">@Resources.TableHeads.Delete</a></td>
             </tr>

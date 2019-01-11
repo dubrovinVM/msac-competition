@@ -17,7 +17,8 @@ namespace msac_competition.BLL.Infrastructure
     {
         public static IServiceCollection AddSqlContextDependencies(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<ApplicationContext>(options =>options.UseLazyLoadingProxies().UseSqlServer(connectionString).EnableSensitiveDataLogging()
+            //UseLazyLoadingProxies()
+            services.AddDbContext<ApplicationContext>(options =>options.UseSqlServer(connectionString).EnableSensitiveDataLogging()
                 .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.DetachedLazyLoadingWarning)));
             return services;
         }
@@ -25,14 +26,14 @@ namespace msac_competition.BLL.Infrastructure
         public static IServiceCollection AddUnitOfWorkDependencies(this IServiceCollection services)
         {
             //services.AddScoped<IRepository, GenericRepository>().AddDbContext<ApplicationContext>();
-            services.AddScoped(typeof(IRepository<,>), typeof(GenericRepository<,>)).AddDbContext<ApplicationContext>();
-
+            services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+            services.AddScoped(typeof(IRepository<,>), typeof(GenericRepository<,>));
             services.AddScoped<ITeamService, TeamService>();
             services.AddScoped<ICoachService, CoachService>();
             //services.AddScoped<ICompetitionService, CompetitionService>();
-            //services.AddScoped<IFstService, FstService>();
-            //services.AddScoped<ISportmanService, SportmanService>();
-            //services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IFstService, FstService>();
+            services.AddScoped<ISportmanService, SportmanService>();
+            services.AddScoped<ICityService, CityService>();
             return services;
         }
     }

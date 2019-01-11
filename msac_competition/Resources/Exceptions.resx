@@ -141,6 +141,9 @@
   <data name="mapper" xml:space="preserve">
     <value>Mapper can't be null</value>
   </data>
+  <data name="notCorrectRequest" xml:space="preserve">
+    <value>Не коректний запит!</value>
+  </data>
   <data name="sportmanServiceNullException" xml:space="preserve">
     <value>SportmanService can't be null</value>
   </data>

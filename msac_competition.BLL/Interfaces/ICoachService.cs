@@ -5,17 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using msac_competition.BLL.DTO;
 using msac_competition.DAL.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace msac_competition.BLL.Interfaces
 {
-    public interface ICoachService : IBaseService<Coach, int>, IDisposable
+    public interface ICoachService : IBaseService<Team, int>
     {
         string CoachFolder { get; set; }
         IList<CoachDTO> GetAll();
-        Task<CoachDTO> Get(int id);
-        Task <CoachDTO> GetAsNoTrack(int id);
-        Task Create(CoachDTO coachDto, bool shouldBeCommited = false);
-        void Delete(CoachDTO coachDto, bool shouldBeCommited = false);
-        Task UpdateCoach(CoachDTO coachDto, bool shouldBeCommited = false);
+        Task<CoachDTO> GetById(int id);
+        Task <CoachDTO> GetByIdAsNoTrack(int id);
+        Task<CoachDTO> Create(CoachDTO coachDto, IFormFile ava, bool shouldBeCommited = false);
+        Task Delete(CoachDTO coachDto, bool shouldBeCommited = false);
+        Task UpdateCoach(CoachDTO coachDto, IFormFile ava, bool shouldBeCommited = false);
     }
 }

@@ -34,6 +34,10 @@ namespace msac_competition.Models
         [Display(Name = "Team", ResourceType = typeof(@Resources.TableHeads))]
         public TeamViewModel Team { get; set; }
 
+        public int? CityId { get; set; }
+        [Display(Name = "City", ResourceType = typeof(@Resources.TableHeads))]
+        public CityViewModel City { get; set; }
+
         public List<SportmanViewModel> Sportmen { get; set; }
 
         public CoachEditViewModel()
@@ -44,5 +48,6 @@ namespace msac_competition.Models
         [Display(Name = "Team", ResourceType = typeof(@Resources.TableHeads))]
         public string SelectedTeam { get; set; }
         public IEnumerable<SelectListItem> Teams { get; set; }
+        public IEnumerable<SelectListItem> Cities { get; set; }
     }
 }

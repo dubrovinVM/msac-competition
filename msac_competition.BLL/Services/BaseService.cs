@@ -16,12 +16,12 @@ namespace msac_competition.BLL.Services
 {
     public class BaseService<TEntity, TKey> : IBaseService<TEntity, TKey> where TEntity : class, IEntity<TKey>
     {
-        protected readonly IRepository<TEntity, TKey> _repository;
+        //protected readonly IRepository<TEntity, TKey> _repository;
 
-        public BaseService(IRepository<TEntity, TKey> genericRepository)
-        {
-            _repository = genericRepository;
-        }
+        //public BaseService(IRepository<TEntity, TKey> genericRepository)
+        //{
+        //    _repository = genericRepository;
+        //}
 
         public async Task<string> SaveAvatarAsync(IFormFile file, string surname, string imageFolder)
         {
@@ -67,18 +67,22 @@ namespace msac_competition.BLL.Services
             }
         }
 
-        public virtual async Task CommitAsync(bool shouldBeCommited = false)
+        public virtual void Dispose()
         {
-            if (shouldBeCommited)
-            {
-                await _repository.CommitAsync();
-            }
         }
 
-        public void Dispose()
-        {
-            _repository.Dispose();
-        }
+        //public virtual async Task CommitAsync(bool shouldBeCommited = false)
+        //{
+        //    if (shouldBeCommited)
+        //    {
+        //        await _repository.CommitAsync();
+        //    }
+        //}
+
+        //public void Dispose()
+        //{
+        //    _repository.Dispose();
+        //}
 
 
         //public async Task Create(TEntityDto newItem, bool shouldBeCommited = false)

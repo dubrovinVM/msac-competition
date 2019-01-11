@@ -66,6 +66,12 @@ namespace msac_competition.DAL.EF
                 .HasForeignKey<Team>(t => t.CoachId)
                 .OnDelete(DeleteBehavior.SetNull);
 
+            modelBuilder.Entity<City>()
+                .HasMany(r => r.Coaches)
+                .WithOne(s => s.City)
+                .HasForeignKey(s => s.CityId)
+                .OnDelete(DeleteBehavior.SetNull);
+
             base.OnModelCreating(modelBuilder);
         }
     }
