@@ -1,0 +1,518 @@
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 21.7523ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.7582ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 666.1634ms
+Request finished in 804.6043ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 280.1079ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 193.2913ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 595.7809ms
+Request finished in 707.4954ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/Fst  
+Route matched with {action = "Index", controller = "Fst"}. Executing action msac_competition.Controllers.FstController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.FstController.Index (msac_competition) - Validation state: Valid
+FstController started
+Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [f].[Id], [f].[Name]
+FROM [Fsts] AS [f]
+ORDER BY [f].[Id]
+Executed action method msac_competition.Controllers.FstController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 102.5178ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 27.1482ms.
+Executed action msac_competition.Controllers.FstController.Index (msac_competition) in 179.3349ms
+Request finished in 232.9466ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 28.3127ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.7006ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 500.6322ms
+Request finished in 634.9275ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 222.961ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 123.6422ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 465.1819ms
+Request finished in 480.0554ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/Fst  
+Route matched with {action = "Index", controller = "Fst"}. Executing action msac_competition.Controllers.FstController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.FstController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [f].[Id], [f].[Name]
+FROM [Fsts] AS [f]
+ORDER BY [f].[Id]
+Executed action method msac_competition.Controllers.FstController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 52.4279ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 14.8323ms.
+Executed action msac_competition.Controllers.FstController.Index (msac_competition) in 142.5917ms
+Request finished in 186.819ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/Fst123  
+Request finished in 4.2491ms 404 
+Request starting HTTP/1.1 GET http://localhost:44341/qwerf.html  
+Request finished in 4.9538ms 404 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 22.3196ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 1.2823ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 529.6779ms
+Request finished in 682.2902ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 231.9433ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 125.4897ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 401.3576ms
+Request finished in 456.1364ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/qwer.html  
+Request finished in 6.3481ms 404 
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request finished in 21.7735ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6667ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 554.9428ms
+Request finished in 705.5535ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 222.7323ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 125.1889ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 398.1434ms
+Request finished in 451.4435ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/asd.html  
+Request finished in 5.6501ms 404 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 28.214ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6754ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 554.8821ms
+Request finished in 689.8584ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 225.4999ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 111.7873ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 377.1198ms
+Request finished in 430.363ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/asd.html  
+Request finished in 8.1139ms 404 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 32.3654ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.8514ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 515.9169ms
+Request finished in 655.8733ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 217.6457ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 120.8411ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 373.6672ms
+Request finished in 408.4517ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/dev  
+Request finished in 5.6566ms 404 text/plain
+Request starting HTTP/1.1 GET http://localhost:44341/dev.html  
+Request finished in 8.231ms 404 text/plain
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request finished in 23.3375ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6978ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 552.3032ms
+Request finished in 686.9501ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 268.9579ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 128.3255ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 449.4347ms
+Request finished in 482.2442ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/def  
+Request finished in 3.8674ms 404 text/plain
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request finished in 45.6433ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6669ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 499.1296ms
+Request finished in 655.1766ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 228.0814ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 118.8176ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 382.1188ms
+Request finished in 449.9404ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/asd  
+Connection id "0HLLPPJQ6TUVQ", Request id "0HLLPPJQ6TUVQ:00000002": An unhandled exception was thrown by the application.
+Request finished in 146.0241ms 500 
+Request starting HTTP/1.1 GET http://localhost:44341/asd  
+Connection id "0HLLPPJQ6TUVR", Request id "0HLLPPJQ6TUVR:00000003": An unhandled exception was thrown by the application.
+Request finished in 13.4403ms 500 
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request finished in 26.5986ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 1.384ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 548.8327ms
+Request finished in 704.8223ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 225.6503ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 122.1797ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 416.7439ms
+Request finished in 471.0376ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/fert/  
+Request finished in 4.8724ms 404 text/plain
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request finished in 21.747ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 2.3766ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 525.1724ms
+Request finished in 661.4583ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 223.6631ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 122.5489ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 379.7025ms
+Request finished in 413.1959ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/asd/  
+Request finished in 6.956ms 404 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 19.9333ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6724ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 527.2954ms
+Request finished in 664.2746ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 237.4691ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 127.5606ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 405.3895ms
+Request finished in 449.462ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/wer  
+Request finished in 5.7431ms 404 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 24.2872ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Request starting HTTP/1.1 GET http://localhost:44341/asd  
+Request finished in 6.0319ms 404 
+Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.7196ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 665.5803ms
+Request finished in 803.0948ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 21.8869ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6704ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 512.4376ms
+Request finished in 659.4282ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 231.1466ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 150.9841ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 421.8938ms
+Request finished in 471.5016ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/asd  
+Request finished in 10.6667ms 404 
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request finished in 24.2043ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6479ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 551.109ms
+Request finished in 701.4066ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 226.1656ms.
+Executing ViewResult, running view Index.
+Executed ViewResult - view Index executed in 126.7323ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 390.843ms
+Request finished in 430.7083ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/asd  
+Request finished in 4.9646ms 404 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 29.2155ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.7144ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 489.442ms
+Request finished in 649.6786ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/Coach  
+Route matched with {action = "Index", controller = "Coach"}. Executing action msac_competition.Controllers.CoachController.Index (msac_competition)
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.CoachController.Index (msac_competition) - Validation state: Valid
+Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Avatar], [c].[CityId], [c].[DaTeOfBirth], [c].[Lastname], [c].[Name], [c].[Sex], [c].[SportRank], [c].[Surname], [c.City].[Id], [c.City].[Name], [c.City].[RegionId], [c.Team].[Id], [c.Team].[CityId], [c.Team].[CoachId], [c.Team].[FstId], [c.Team].[Logo], [c.Team].[Name], [c.Team].[ShortName]
+FROM [Coaches] AS [c]
+LEFT JOIN [Cities] AS [c.City] ON [c].[CityId] = [c.City].[Id]
+LEFT JOIN [Teams] AS [c.Team] ON [c].[Id] = [c.Team].[CoachId]
+Executed action method msac_competition.Controllers.CoachController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.ViewResult in 217.7691ms.
+Executing ViewResult, running view Index.
+Request starting HTTP/1.1 GET http://localhost:44341/asd  
+Request finished in 5.8391ms 404 
+Executed ViewResult - view Index executed in 214.5086ms.
+Executed action msac_competition.Controllers.CoachController.Index (msac_competition) in 481.1109ms
+Request finished in 499.6737ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44341/asd/  
+Request finished in 4.4457ms 404 
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request finished in 25.9515ms 307 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.501ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 382.0397ms
+Request finished in 468.806ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/  
+Request starting HTTP/1.1 GET http://localhost:44341/asd  
+Request starting HTTP/1.1 DEBUG http://localhost:58908/  0
+Request finished in 29.3243ms 200 
+Request finished in 114.2324ms 404 
+Route matched with {action = "Index", controller = "Home"}. Executing action msac_competition.Controllers.HomeController.Index (msac_competition)
+Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+Executing action method msac_competition.Controllers.HomeController.Index (msac_competition) - Validation state: Valid
+Executed action method msac_competition.Controllers.HomeController.Index (msac_competition), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6521ms.
+Executing RedirectResult, redirecting to /Coach.
+Executed action msac_competition.Controllers.HomeController.Index (msac_competition) in 574.041ms
+Request finished in 789.2496ms 302 
+Request starting HTTP/1.1 GET http://localhost:44341/asd/  
+Request finished in 3.8264ms 404 

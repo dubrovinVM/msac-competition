@@ -18,7 +18,7 @@ namespace msac_competition
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+        //.ConfigureLogging(logging => logging.SetMinimumLevel(LogLevel.Trace))
     }
 }
