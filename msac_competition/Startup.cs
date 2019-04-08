@@ -59,6 +59,7 @@ namespace msac_competition
             services.AddSingleton(mapper2);
 
             services.AddSingleton(Configuration);
+            services.AddSession();
 
         }
 
@@ -66,7 +67,7 @@ namespace msac_competition
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseStaticFiles();
-
+            app.UseSession();
             //env.EnvironmentName = EnvironmentName.Production;
             if (env.IsDevelopment())
             {
