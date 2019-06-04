@@ -40,6 +40,7 @@ namespace msac_competition.Controllers
             _сoachService.CoachFolder = coachFolder;
         }
 
+        [Route("Home")]
         public IActionResult Index()
         {
             var itemDto = _сoachService.GetAll();
@@ -183,7 +184,6 @@ namespace msac_competition.Controllers
             _сoachService.Dispose();
             base.Dispose(disposing);
         }
-
 
     }
 }

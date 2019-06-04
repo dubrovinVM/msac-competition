@@ -24,7 +24,7 @@ namespace msac_competition.Controllers
             //_competitionService = competitionService ?? throw new ArgumentNullException(Resources.Exceptions.competitionServiceNullException);
             _mapper = mapper ?? throw new ArgumentNullException(Resources.Exceptions.mapper);
         }
-
+       
         public IActionResult Index()
         {
             return RedirectToAction("Index","Coach");

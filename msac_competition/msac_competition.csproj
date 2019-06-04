@@ -62,6 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\" />
     <Folder Include="wwwroot\images\coaches\" />
     <Folder Include="wwwroot\images\afisha\" />
     <Folder Include="wwwroot\images\sportsmen\" />

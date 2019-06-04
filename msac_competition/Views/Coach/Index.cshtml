@@ -25,34 +25,35 @@
             </tr>
         </thead>
         <tbody>
-        @foreach (var coach in Model)
-        {
-            var team = @coach.Team != null ? coach.Team.Name : "";
-            var city = @coach.City != null ? coach.City.Name : "";
-            var sex = ((Sex)@coach.Sex).GetDisplayName();
-            var sportRank = @coach.SportRank != null ? ((SportRank)@coach.SportRank).GetDisplayName() : String.Empty;
-            var daTeOfBirth = @coach.DaTeOfBirth != null ? $"{@coach.DaTeOfBirth:dd.MM.yyyy}" : String.Empty;
-            <tr>
-                <td>
-                    @{ var source = !string.IsNullOrEmpty(@coach.Avatar) ? $"/images/coaches/{@coach.Avatar}" : "/images/noPhoto.jpg";}
-                    <img src="@source" style="height: 40px;width: 40px" />
-                </td>
-                <td>@coach.Surname</td>
-                <td>@coach.Name</td>
-                <td>@coach.Lastname</td>
-                <td>@daTeOfBirth</td>
-                <td>@sportRank</td>
-                <td>@sex</td>
-                <td>@team</td>
-                <td>@city</td>
-                <td><a asp-action="Edit" asp-route-id="@coach.Id">@Resources.TableHeads.Update</a></td>
-                <td><a asp-action="Delete" asp-route-id="@coach.Id">@Resources.TableHeads.Delete</a></td>
-            </tr>
-        }
+            @foreach (var coach in Model)
+            {
+                var team = @coach.Team != null ? coach.Team.Name : "";
+                var city = @coach.City != null ? coach.City.Name : "";
+                var sex = ((Sex)@coach.Sex).GetDisplayName();
+                var sportRank = @coach.SportRank != null ? ((SportRank)@coach.SportRank).GetDisplayName() : String.Empty;
+                var daTeOfBirth = @coach.DaTeOfBirth != null ? $"{@coach.DaTeOfBirth:dd.MM.yyyy}" : String.Empty;
+                <tr>
+                    <td>
+                        @{ var source = !string.IsNullOrEmpty(@coach.Avatar) ? $"/images/coaches/{@coach.Avatar}" : "/images/noPhoto.jpg";}
+                        <img src="@source" style="height: 40px;width: 40px" />
+                    </td>
+                    <td>@coach.Surname</td>
+                    <td>@coach.Name</td>
+                    <td>@coach.Lastname</td>
+                    <td>@daTeOfBirth</td>
+                    <td>@sportRank</td>
+                    <td>@sex</td>
+                    <td>@team</td>
+                    <td>@city</td>
+                    <td><a asp-action="Edit" asp-route-id="@coach.Id">@Resources.TableHeads.Update</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@coach.Id">@Resources.TableHeads.Delete</a></td>
+                </tr>
+            }
         </tbody>
     </table>
     <a asp-action="Create" class="btn btn-info">@Resources.Buttons.Create</a>
 </div>
+
 @*</div>*@
 
 

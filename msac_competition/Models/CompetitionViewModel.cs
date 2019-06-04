@@ -13,7 +13,7 @@ namespace msac_competition.Models
         public ICollection<TeamViewModel> Teams { get; set; }
         public ICollection<SportmanViewModel> Sportmen { get; set; }
 
-        public DateTime StatedAt { get; set; }
+        public DateTime StartedAt { get; set; }
         public DateTime? FinishedAt { get; set; }
         public string Comment { get; set; }
         public CompetitionStatus Status { get; set; }
